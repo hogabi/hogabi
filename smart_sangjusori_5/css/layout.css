@@ -1,0 +1,416 @@
+@charset "utf-8";
+
+*{
+    box-sizing:border-box;
+}
+
+body{position:relative; margin:0; padding:0; color:#3a3a3a; font-size:13px}
+/*
+body#style-box{background:#ffffff}
+::-moz-selection{text-shadow:none}
+::selection{text-shadow:none}
+*/
+#cameron-body{position:relative; z-index:1}
+
+#bside {float:left;}
+
+#style-open #cameron-body{border-top:2px solid #3a3a3a}
+
+/*--[ Clearfix ]--*/
+.newclearfix:after{clear:both; content:' '; display:block; font-size:0; height:0; line-height:0; visibility:hidden; width:0}
+* html .newclearfix,:first-child+html .newclearfix{zoom:1}
+
+/*--[ a ]--*/
+a{color:#3a3a3a}
+a, a > *{text-decoration:none; -webkit-transition:background-color .2s ease, border .2s ease, color .2s ease, opacity .2s ease-in-out; -moz-transition:background-color .2s ease, border .2s ease, color .2s ease, opacity .2s ease-in-out; -ms-transition:background-color .2s ease, border .2s ease, color .2s ease, opacity .2s ease-in-out; -o-transition:background-color .2s ease, border .2s ease, color .2s ease, opacity .2s ease-in-out; transition:background-color .2s ease, border .2s ease, color .2s ease, opacity .2s ease-in-out}
+a:hover{text-decoration:none}
+
+/*--[ Container ]--*/
+/*  전체 크기등 지정 */
+.cameron-container{margin:0 auto; position:relative; width:1080px; padding:0 0 0 0 }
+#style-box .cameron-container{background-color:#fff}
+
+/*--[ Columns ]--*/
+.one-half, .one-third, .two-third, .one-fourth, .three-fourth{float:left; margin-right:20px}
+.one-half.last, .one-third.last, .two-third.last, .one-fourth.last, .three-fourth.last{margin-right:0px}
+.one-half{width:460px}
+.one-third{width:300px}
+.two-third{width:620px}
+.one-fourth{width:220px}
+.three-fourth{width:700px}
+
+
+
+/* ---------------------------------------------------------------------- */
+/*	HEADER
+/* ---------------------------------------------------------------------- */
+/* 2015-08-19  조호갑 언론모임 회의 내용 반영 : 하단선은 진하게 표시하고 상단 선은 삭제
+*/
+#header{border-bottom:2px solid #000000; height: 170px; z-index:999; background-color:#ffffff;}
+#header1{border-bottom:1px solid #000000; height:60px; z-index:999; align-content: center;}
+#snslink{float:left; width:350px; margin-top:20px; font-weight: bold; display: inline-block;}
+#lastUpdateDate{float:left; top:150px; width:500px; margin-top:10px; font-weight: bold;}
+#toplog{float:left;}
+
+
+#style-box #header{border-top:0px solid #3a3a3a}
+#style-open #header{padding-left:0; padding-right:0}
+
+#style-box #header1{border-top:0px solid #3a3a3a}
+#style-open #header1{padding-left:0; padding-right:0}
+
+#logo{position:relative; float:left; top:31px; width:350px;}
+#logo .smart-logo{display:inline-block; width:258px; height:47px; background-image:url(../img/colorset1_logo.png); background-repeat:no-repeat}
+#style-box #logo{left:20px}
+
+
+/*--[ Main Navigation ]--*/
+nav { width: 100%; }
+
+
+.nav_wrapper {
+  position: relative;
+  width: 100%;
+  background: #ffffff;
+}
+
+.menu {
+  width: 100%;
+  height: auto;
+  background: #ffffff;
+}
+
+.menu .sjnavi-active {display: inline-block;}
+
+.menu ul {
+  padding: 0px;
+  margin: 0px;
+  list-style: none;
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+}
+
+.menu > li > ul.sub_menu {
+  min-width: 10em;
+  padding: 4px 0;
+  border: 1px solid #000;
+}
+
+.menu ul li { padding: 0px; color: #000}
+
+.menu > ul > li { display: inline-block;}
+
+.menu .sjnavilifirst1{
+    color: #389bbc;
+}
+
+
+
+.menu ul li a {
+  display: block;
+  color: black;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.menu ul ul li a {
+  display: block;
+  text-decoration: none;
+  color: #000;
+  font-size: 14px;
+}
+
+.menu ul li a:hover {
+  color: #389bbc;
+  transition: all .5s ease-out;
+}
+
+.menu ul li.hover > a {
+  color: #389bbc;
+}
+
+.menu ul li > a { padding: 15px; }
+
+.menu ul ul {
+  display: none;
+  position: absolute;
+  float:left;
+  width: 900px;
+  top: 120%;
+  min-width: 800px;
+}
+
+.menu ul li:hover > ul { display: block; float:left;}
+
+.menu ul ul > li {
+  position: relative;
+  float:left;
+}
+
+.menu ul ul > li a {
+  padding: 10px 15px;
+  height: auto;
+  background: #ffffff;
+}
+
+.menu ul ul > li a:hover {
+  background: #ffffff;
+  color: #389bbc;
+}
+
+.menu ul ul ul {
+  position: absolute;
+  left: 100%;
+  top: 0;
+}
+
+
+
+/* ---------------------------------------------------------------------- */
+/*	CONTENT
+/* ---------------------------------------------------------------------- */
+.content{padding-bottom:20px}
+.content.widget-page{padding-bottom:0}
+
+/*--[ Page Header ]--*/
+.main-page-header{border-bottom:1px solid #efefef; }
+.main-page-header.n-page-header{padding-bottom:20px; border-bottom:0;}
+
+.sub-page-header{border-bottom:1px solid #efefef; margin-bottom:32px; }
+.page-title{float:left; margin:0; padding:12px 0 14px 0; font-family:'Nanum Gothic','Malgun Gothic',돋움,sans-serif; color:#3a3a3a; font-size:16px; font-weight:1080;}
+
+/*--[ Search ]--*/
+#isSearch
+{ float:left; }
+#isSearch
+{width:90%;
+ margin:0;
+ padding:0;
+ background-color:#fff}
+
+#isSearch .searchOrder{display:none}
+
+#isSearch .inputText
+{float:left;
+ width:90%;
+ height:14px;
+ margin:0;
+ padding:8px 0 8px 10px;
+ background:#f8f8f8;
+ border:1px solid #e8e8e8;
+ border-radius:0;
+ line-height:1.3;
+ font-size:13px;
+ color:#959393;
+ -webkit-appearance:none;
+ outline:none}
+
+#isSearch .submit
+{width:32px;
+ height:32px;
+ margin-left:-33px;
+ background:url(../img/searchbtn.png)
+ center no-repeat;
+ border-radius:0;
+ -webkit-appearance:none}
+
+.main-page-header .searchbox
+{float:left;
+ width:200px;
+ padding:7px 0 4px}
+
+
+/*--[ Sign ]--*/
+#signin{float:right; padding:15px 0 16px}
+#signin ul{margin:0; padding:0; list-style:none}
+#signin li{float:left; margin:0 7px; padding-left:15}
+
+#signin li a{color:#778899; font-size:13px;}
+
+
+/*--[ Sub Content ]--*/
+#sub{float:left; width:770x;}
+#sub.fright{float:right}
+#sub.withs,.withs{width:770px}
+
+/*--[ Sub Columns ]--*/
+#sub .one-half{width:330px}
+#sub .one-third{width:213px}
+#sub .two-third{width:447px}
+#sub .one-fourth{width:155px}
+#sub .three-fourth{width:505px}
+
+
+/* ---------------------------------------------------------------------- */
+/*	SIDE
+/* ---------------------------------------------------------------------- */
+#sidebar{float:left; width:300px}
+#sidebar.fright{float:right;}
+
+#sidebar1{float:left; width:300px}
+
+/*--[ Side Menu ]--*/
+#side_menu,
+#side_menu ul,
+#side_menu li{margin:0; padding:0; list-style:none}
+/* 2nd */
+#side_menu > li > ul > li{border-bottom:1px dotted #ced8df}
+#side_menu > li > ul > li:last-child{border-bottom:0}
+#side_menu a.sm2nd{position:relative; display:block; padding:16px 0 16px 21px; background:url(../img/side-nav-arrow.png) no-repeat 8px center; font-family:'Nanum Gothic','Malgun Gothic',돋움,sans-serif; font-weight:700; font-size:13px; color:#888; text-decoration:none; text-shadow:none; cursor:pointer; outline:none}
+#side_menu a.sm3rd-trigger:after{content:'\f106'; position:absolute; top:50%; right:20px; margin-top:-7px; width:0; height:0; font-family:FontAwesome; font-style:normal; font-weight:normal; font-size:13px; line-height:1; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; color:#4c4c4c}
+#side_menu a.sm3rd-trigger.active:after{content:'\f107'; color:#f26859}
+/* 3rd */
+#side_menu .sm3rd-ul{display:none; padding:16px 12px 8px}
+/*
+#side_menu li.current2 .sm3rd-ul{display:block}
+*/
+#side_menu li.current2 .sm3rd-ul{display:block;}
+#side_menu a.sm3rd{position:relative; display:block; margin-bottom:12px; padding:0 0 0 10px; font-family:'Nanum Gothic','Malgun Gothic',돋움,sans-serif; font-weight:700; font-size:12px; color:#888; text-decoration:none; text-shadow:none; cursor:pointer; outline:none}
+
+#side_menu a.sm2nd:hover,
+#side_menu a.sm2nd:focus,
+#side_menu a.active{background-color:#f8f8f8}
+#side_menu a:hover,
+#side_menu a:focus,
+#side_menu li.current2 a.sm2nd,
+#side_menu li.current3 a.sm3rd{color:#f26859}
+
+/*--[ Widgets ]--*/
+#sj-side-widget{padding-bottom:20px;border: solid, 1px, margin : 2px}
+#sidebar .side-widget{padding-bottom:20px}
+#sidebar .widget-title{margin:0 2px 12px; font-family:'Nanum Gothic','Malgun Gothic',돋움,sans-serif; font-weight:700; font-size:15px; color:#3a3a3a}
+
+/* ---------------------------------------------------------------------- */
+/*	상단 메뉴 테이블 처리한 부분
+/* ---------------------------------------------------------------------- */
+#tbtop1 td{text-align:center; border:0px solid black;}
+
+/* ---------------------------------------------------------------------- */
+/*	FOOTER
+/* ---------------------------------------------------------------------- */
+#footer{position:relative; color:#868686; padding-top: 15px; margin-top: 15px;
+        border-top :1px solid #ced8df}
+
+    .footer-log {float:left; display: block; width:300px;height:400px;padding-top: 1px}
+    .footer-log img {width: 280px}
+
+    .footer-text {display: inline-block; width: 780px; font-size:0.8rem}
+
+    .footer-nav {display: inline-block; width: 780px; font-size:0.8rem}
+    .footer-nav ul {
+      list-style: none;
+      background-color: #444;
+      text-align: center;
+      padding: 0;
+      margin: 0;
+    }
+    .footer-nav li {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.8rem;
+      line-height: 30px;
+      padding: 3px;
+
+      margin-left: 15px;
+      height: 30px;
+      border-bottom: none;
+      display: inline-block;
+    }
+
+    .footer-nav a {
+      text-decoration: none;
+      color: #fff;
+      display: block;
+      transition: .3s background-color;
+    }
+
+    .footer-nav a.active {
+      background-color: #fff;
+      color: #444;
+      cursor: default;
+    }
+
+
+
+/*--[ Logo Bottom ]--*/
+#logo-bottom img{margin-top:10px}
+#logo-bottom .smart-logo-bottom{display:inline-block; width:258px; height:47px; background-image:url(../img/colorset1_logo_bottom.png); background-repeat:no-repeat}
+
+/*--[ Bottom Navigation ]--*/
+#bottom-nav{margin:0 0 12px; padding:0 0 12px}
+#bottom-nav ul{margin:0; padding:0; list-style:none}
+#bottom-nav li{float:left; margin:0 18px 0 0; padding:0}
+#bottom-nav li:after{content:"|"; display:inline-block; margin-left:13px; font-size:11px; color:#4a4a4a}
+#bottom-nav li:last-child{margin-right:0; padding-right:0}
+#bottom-nav li:last-child:after{content:""; margin-left:0}
+#bottom-nav li a{font-family:Arial,Helvetica,sans-serif,돋움; font-size:12px; color:#949494}
+
+/*--[ Contact Info ]--*/
+#contact-info{margin:0; padding:0; list-style:none}
+#contact-info li{position:relative; float:left; margin:0 28px 5px 0; padding:0 0 0 24px; *padding-left:0; font-size:12px; line-height:1.5}
+#contact-info li:before{position:absolute; top:50%; left:0; display:block; font-family:FontAwesome; font-style:normal; font-weight:normal; line-height:1}
+#contact-info li.address{float:none}
+#contact-info li.address:before{content:"\f015"; margin-left: -1px; margin-top:-11px; font-size:20px}
+#contact-info li.phone:before{content:"\f095"; margin-left: 1px; margin-top:-10px; font-size:20px}
+#contact-info li.fax:before{content:"\f02f"; margin-top:-10px; font-size:18px}
+#contact-info li.email:before{content:"\f0e0"; margin-top:-9px; font-size:17px}
+
+
+/* ---------------------------------------------------------------------- */
+/*	FOOTER BOTTOM
+/* ---------------------------------------------------------------------- */
+#copyinfo{line-height:17px; padding-top:12px; padding-bottom:12px}
+#style-box #copyinfo{background:#303030}
+#style-open #copyinfo{width:auto; margin:0; padding-left:0; padding-right:0; background:#303030}
+
+/*--[ Copyright and Option Navigation ]--*/
+#copyinfo ul{margin:0; padding:0; list-style:none}
+#style-open #copyinfo ul{width:940px; margin:0 auto}
+#copyinfo li{float:left; margin:0 10px 0 0; padding:0; font-family:Arial,Helvetica,sans-serif,돋움; font-size:11px}
+#copyinfo li:after{content:'|'; display:inline-block; margin-left:6px; font-size:11px; color:#4a4a4a}
+#copyinfo li:last-child{margin-right:0; padding-right:0}
+#copyinfo li:last-child:after{content:''; margin-left:0}
+
+/*--[ Back to Top ]--*/
+#sTop{display:none; position:fixed; right:20px; bottom:30px; width:45px; height:46px; overflow:hidden; background:url(../img/arrow-up-large.png) no-repeat center center; background-color:rgb(221, 221, 221); background-color:rgba(221, 221, 221, .7); -webkit-transition:all .2s ease; -moz-transition:all .2s ease; -ms-transition:all .2s ease; -o-transition:all .2s ease; transition:all .2s ease; text-indent:-999px; z-index:100}
+
+
+/* ---------------------------------------------------------------------- */
+/*	MEDIA QUERIES
+/* ---------------------------------------------------------------------- */
+
+@media screen and (max-width:10px){
+	#content.widget-page > div{float:none !important; width:100% !important; margin:0 0 30px 0 !important}
+	#contents img{height:auto; max-width:100%}
+	#bottom-nav{display:none}
+	#style-open #copyinfo ul{width:auto}
+	#contact-info li{border-bottom:1px dotted #4b4b4b; float:none; margin-left:0; padding-top:5px; padding-bottom:5px}
+	#contact-info li:last-child{border-bottom:none}
+	.wbox_responsive,
+	.mobile-hidden{display:none !important}
+}
+
+
+/* ---------------------------------------------------------------------- */
+/*	XE FIX
+/* ---------------------------------------------------------------------- */
+/*--[ Page Fix ]--*/
+#content .btnArea{margin:0 !important; padding:10px 0 !important}
+
+/*--[ Member ]--*/
+.xm h1,.xc h1{margin:0 0 20px 0; padding:0 0 20px 0; border-bottom:1px solid #efefef; font-family:'Nanum Gothic','Malgun Gothic',돋움,sans-serif; font-weight:700; color:#3a3a3a}
+.xm .nav-tabs>li,.xc .nav-tabs>li{font-family:'Nanum Gothic','Malgun Gothic',돋움,sans-serif; font-weight:700}
+.xm .login-header h1{padding:0; border-bottom:0}
+.xm .form-horizontal{margin:0; padding:10px 0}
+.xm .form-horizontal .control-label{padding-top:8px; font-family:'Nanum Gothic','Malgun Gothic',돋움,sans-serif; font-weight:700; color:#3a3a3a}
+.xm input[type="text"], .xm input[type="password"], .xm input[type="email"], .xm input[type="url"], .xm input[type="search"], .xm input[type="tel"]{padding:6px}
+
+@media screen and (max-width:767px){
+	/*--[ Content Image IE8 Fix ]--*/
+	#content img{height:auto\9 !important}
+
+	.xm .form-horizontal .control-group{margin-bottom:10px}
+	.xm .form-horizontal .control-label{float:none; width:auto; text-align:left}
+	.xm .form-horizontal .controls{margin-left:0}
+	.xm input, .xm textarea{width:95%}
+}

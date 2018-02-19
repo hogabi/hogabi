@@ -1,0 +1,50 @@
+@charset "utf-8";
+
+    
+
+/*    .footer-nav {width: 780px; float : left;}*/
+
+    .footer-log {float:left;display: block; width:300px;height:400px;padding-top: 10px}
+    .footer-text {display: inline-block; width: 780px; font-size:0.8rem} 
+
+    .footer-nav ul {
+      list-style: none;
+      background-color: #444;
+      text-align: center;
+      padding: 0;
+      margin: 0;
+    }
+    .footer-nav li {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.0rem;
+      line-height: 40px;
+      width : 130px;
+      height: 40px;
+      border-bottom: none;
+      display: inline-block;
+    }
+
+    .footer-nav a {
+      text-decoration: none;
+      color: #fff;
+      display: block;
+      transition: .3s background-color;
+    }
+
+    .footer-nav a:hover {
+      background-color: #005f5f;
+    }
+
+    .footer-nav a.active {
+      background-color: #fff;
+      color: #444;
+      cursor: default;
+    }
+
+
+        
+
+
+
+
+    

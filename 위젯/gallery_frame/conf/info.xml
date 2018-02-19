@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget version="0.2">
+	<title xml:lang="ko">Gallery Frame</title>
+	<title xml:lang="en">Gallery Frame</title>
+	<description xml:lang="ko">선택된 모듈에 첨부된 이미지들을 Gallery 형식으로 보여주는 위젯</description>
+	<description xml:lang="en">This widget displays images on selected modules and add some effects with jquery libraries.</description>
+	<version>0.0.2</version>
+	<date>2010-01-01</date>
+
+	<author email_address="zirho6@gmail.com" link="http://www.zirho.co.kr">
+		<name xml:lang="ko">zirho</name>
+		<name xml:lang="en">zirho</name>
+	</author>
+
+	<extra_vars>
+		<var id="module_srls">
+			<type>module_srl_list</type>
+			<name xml:lang="ko">대상 모듈</name>
+			<name xml:lang="en">Target Module</name>
+			<description xml:lang="ko">선택하신 모듈에 등록된 글을 대상으로 합니다.</description>
+			<description xml:lang="en">Articles on chosen module will be the target.</description>
+		</var>
+		<var id="thumbnail_type">
+			<type>select</type>
+			<name xml:lang="ko">썸네일 생성 방법</name>
+			<name xml:lang="en">Thumbnail Type</name>
+			<description xml:lang="ko">썸네일 생성 방법을 선택할 수 있습니다.(기본값: crop) (crop : 꽉 채우기, ratio : 비율 맞추기)</description>
+			<description xml:lang="en">Thumbnail Type may be set here.</description>
+			<options>
+				<value>crop</value>
+				<name xml:lang="ko">Crop (채우기)</name>
+				<name xml:lang="en">Crop</name>
+			</options>
+			<options>
+				<value>ratio</value>
+				<name xml:lang="ko">Ratio (비율 맞추기)</name>
+				<name xml:lang="en">Ratio</name>
+			</options>
+		</var>
+		<var id="nav_theme">
+			<type>select</type>
+			<name xml:lang="ko">테마 컬러</name>
+			<name xml:lang="en">Color theme</name>
+			<description xml:lang="ko">버튼 등의 색을 지정하는 테마를 선택합니다. (기본값: dark)</description>
+			<description xml:lang="en">Set color theme for buttons.</description>
+			<options>
+				<value>dark</value>
+				<name xml:lang="ko">DARK</name>
+				<name xml:lang="en">DARK</name>
+			</options>
+			<options>
+				<value>light</value>
+				<name xml:lang="ko">LIGHT</name>
+				<name xml:lang="en">LIGHT</name>
+			</options>
+		</var>
+		<var id="filmstrip_position">
+			<type>select</type>
+			<name xml:lang="ko">네비게이터 위치</name>
+			<name xml:lang="en">Filmstrip Position</name>
+			<description xml:lang="ko">네비게이터의 위치를 지정합니다. (기본값: bottom)</description>
+			<description xml:lang="en">Set color theme for buttons.</description>
+			<options>
+				<value>bottom</value>
+				<name xml:lang="ko">아래</name>
+				<name xml:lang="en">BOTTOM</name>
+			</options>
+			<options>
+				<value>top</value>
+				<name xml:lang="ko">위</name>
+				<name xml:lang="en">TOP</name>
+			</options>
+			<options>
+				<value>left</value>
+				<name xml:lang="ko">좌측</name>
+				<name xml:lang="en">LEFT</name>
+			</options>
+			<options>
+				<value>right</value>
+				<name xml:lang="ko">우측</name>
+				<name xml:lang="en">RIGHT</name>
+			</options>
+		</var>
+		<var id="clickable">
+			<type>select</type>
+			<name xml:lang="ko">클릭하면 해당 게시글 이동</name>
+			<name xml:lang="en">Filmstrip Position</name>
+			<description xml:lang="ko">클릭하면 해당 게시글 이동 기능을 사용할지 선택합니다. (기본값: yes)</description>
+			<description xml:lang="en">Set if it's clickable for the article.</description>
+			<options>
+				<value>true</value>
+				<name xml:lang="ko">예</name>
+				<name xml:lang="en">YES</name>
+			</options>
+			<options>
+				<value>false</value>
+				<name xml:lang="ko">아니오</name>
+				<name xml:lang="en">NO</name>
+			</options>
+		</var>
+		<var id="shuffling">
+			<type>select</type>
+			<name xml:lang="ko">랜덤</name>
+			<name xml:lang="en">Shuffle</name>
+			<description xml:lang="ko">이미지를 랜덤으로 가져옵니다. (기본값: no)</description>
+			<description xml:lang="en">Get images by random.</description>
+			<options>
+				<value>false</value>
+				<name xml:lang="ko">아니오</name>
+				<name xml:lang="en">NO</name>
+			</options>
+			<options>
+				<value>true</value>
+				<name xml:lang="ko">예</name>
+				<name xml:lang="en">YES</name>
+			</options>
+		</var>
+		<var id="pause_on_hover">
+			<type>select</type>
+			<name xml:lang="ko">마우스오버 시 멈춤</name>
+			<name xml:lang="en">Mouse over stop</name>
+			<description xml:lang="ko">마우스오버 시 멈추게 합니다. (기본값: yes)</description>
+			<description xml:lang="en">Stop flowing when mouseover. (default: yes)</description>
+			<options>
+				<value>true</value>
+				<name xml:lang="ko">예</name>
+				<name xml:lang="en">YES</name>
+			</options>
+			<options>
+				<value>false</value>
+				<name xml:lang="ko">아니오</name>
+				<name xml:lang="en">NO</name>
+			</options>
+		</var>
+		<var id="panel_width">
+			<type>text</type>
+			<name xml:lang="ko">이미지 가로크기</name>
+			<name xml:lang="en">Width of Image</name>
+			<description xml:lang="ko">출력될 이미지의 가로크기를 정하실 수 있습니다. (기본값:  500px)</description>
+			<description xml:lang="en">You can set the width of image. (500 as default)</description>
+		</var>
+		<var id="panel_height">
+			<type>text</type>
+			<name xml:lang="ko">이미지 세로크기</name>
+			<name xml:lang="en">Height of Image</name>
+			<description xml:lang="ko">출력될 이미지의 세로 크기를 지정할 수 있습니다. (기본값:  200px)</description>
+			<description xml:lang="en">You can set the height of image. (200 as default)</description>
+		</var>
+		<var id="frame_width">
+			<type>text</type>
+			<name xml:lang="ko">섬네일 이미지 가로크기</name>
+			<name xml:lang="en">Width of Image</name>
+			<description xml:lang="ko">출력될 섬네일 이미지의 가로크기를 정하실 수 있습니다. (기본값:  50px)</description>
+			<description xml:lang="en">You can set the width of image. (50 as default)</description>
+		</var>
+		<var id="frame_height">
+			<type>text</type>
+			<name xml:lang="ko">섬네일 세로크기</name>
+			<name xml:lang="en">Height of Image</name>
+			<description xml:lang="ko">출력될 섬네일 이미지의 세로 크기를 지정할 수 있습니다. (기본값:  50px)</description>
+			<description xml:lang="en">You can set the height of image. (50 as default)</description>
+		</var>
+		<var id="total_images_num">
+			<type>text</type>
+			<name xml:lang="ko">총 이미지 수</name>
+			<name xml:lang="en">How many image to show</name>
+			<description xml:lang="ko">선택된 모듈에서 가져오는 총 이미지 수 (기본값:  15개)</description>
+			<description xml:lang="en">You can set the number of all the images to be shown. (15 as default)</description>
+		</var>
+		<var id="sliding_effect">
+			<type>select</type>
+			<name xml:lang="ko">이동 효과</name>
+			<name xml:lang="en">sliding effect</name>
+			<description xml:lang="ko">슬라이드 되는 효과를 설정합니다. </description>
+			<description xml:lang="en">Choose sliding method. (ease as default)</description>
+			<options>
+				<value>easeOutQuad</value>
+				<name xml:lang="ko">보통</name>
+				<name xml:lang="en">normal</name>
+			</options>
+			<options>
+				<value>easeInOutQuad</value>
+				<name xml:lang="ko">음~ 부드럽게</name>
+				<name xml:lang="en">mellow</name>
+			</options>
+			<options>
+				<value>easeInBack</value>
+				<name xml:lang="ko">얍! 뒤로 당겼다가 쏘기</name>
+				<name xml:lang="en">back and go</name>
+			</options>
+			<options>
+				<value>easeOutBack</value>
+				<name xml:lang="ko">디용~! 앞으로 갔다가 도착</name>
+				<name xml:lang="en">go and back</name>
+			</options>
+			<options>
+				<value>easeInOutBack</value>
+				<name xml:lang="ko">얍! 디용~!뒤로 당겨서 출발후 앞으로 갔다 돌아옴</name>
+				<name xml:lang="en">and and go and go and back</name>
+			</options>
+			<options>
+				<value>easeInOutExpo</value>
+				<name xml:lang="ko">우~웅! 막~빨라졌다 느려짐</name>
+				<name xml:lang="en">slow fast slow</name>
+			</options>
+			<options>
+				<value>easeOutBounce</value>
+				<name xml:lang="ko">통!통! 튀어서 도착</name>
+				<name xml:lang="en">tong tong arrive</name>
+			</options>
+			<options>
+				<value>easeInBounce</value>
+				<name xml:lang="ko">!통!통 튀어서 출발</name>
+				<name xml:lang="en">tong tong depart</name>
+			</options>
+			<options>
+				<value>easeInOutBounce</value>
+				<name xml:lang="ko">!통!통! 튀어서 출발, 도착</name>
+				<name xml:lang="en">tong tong depart arrive</name>
+			</options>
+			<options>
+				<value>easeInElastic</value>
+				<name xml:lang="ko">~흔~들~흔~들 출발</name>
+				<name xml:lang="en">h h depart</name>
+			</options>
+			<options>
+				<value>easeOutElastic</value>
+				<name xml:lang="ko">흔~들~흔~들~ 도착</name>
+				<name xml:lang="en">h h arrive</name>
+			</options>
+			<options>
+				<value>easeInOutElastic</value>
+				<name xml:lang="ko">~흔~들~흔~들~ 도착, 출발</name>
+				<name xml:lang="en">h h depart, arrive</name>
+			</options>
+		</var>
+		<var id="transition_interval">
+			<type>text</type>
+			<name xml:lang="ko">자동 스크롤 주기</name>
+			<name xml:lang="en">Auto scroll period</name>
+			<description xml:lang="ko">자동 스크롤 주기를 설정합니다. (기본값: 3000 (3초))</description>
+			<description xml:lang="en">You can set the period of auto scroll sec. (3000 as default)</description>
+		</var>
+		<var id="transition_speed">
+			<type>text</type>
+			<name xml:lang="ko">자동 스크롤 소요시간</name>
+			<name xml:lang="en">Auto scroll period</name>
+			<description xml:lang="ko">자동 스크롤 되는 소요시간입니다. 즉, 3초로 설정하시면 3초동안 움직입니다. 짧을수록 빠르겠죠? ^^ 위의 이동방식이 "자동스크롤" 일 경우 적용됩니다. (기본값: 300 (0.3초))</description>
+			<description xml:lang="en">You can set the speed of auto scroll. The less it is, the faster it will be. ^^(300 as default)</description>
+		</var>
+		
+		<var id="background_color">
+			<type>color</type>
+			<name xml:lang="ko">배경색</name>
+			<name xml:lang="en">writer color</name>
+			<description xml:lang="ko">작성자 글자색입니다.(기본값: 투명)</description>
+			<description xml:lang="en">Set color of the background. (transparent as default)</description>
+		</var>
+		<var id="overlay_color">
+			<type>color</type>
+			<name xml:lang="ko">제목, 내용 배경색</name>
+			<name xml:lang="en">content color</name>
+			<description xml:lang="ko">제목, 내용 배경색입니다.(기본값: 투명)</description>
+			<description xml:lang="en">Set color of the title and content. (transparent as default)</description>
+		</var>
+		<var id="overlay_opacity">
+			<type>select</type>
+			<name xml:lang="ko">제목, 내용 배경 투명도</name>
+			<name xml:lang="en">title, content overlay opacity</name>
+			<description xml:lang="ko">제목, 내용 배경 투명도를 선택합니다. (기본값: 0.5) </description>
+			<description xml:lang="en">Choose title, content overlay opacity. (0.5 as default)</description>
+			<options>
+				<value>0.5</value>
+				<name xml:lang="ko">기본값 (0.5)</name>
+				<name xml:lang="en">default (0.5)</name>
+			</options>
+			<options>
+				<value>0.0</value>
+				<name xml:lang="ko">0.0</name>
+				<name xml:lang="en">0.0</name>
+			</options>
+			<options>
+				<value>0.1</value>
+				<name xml:lang="ko">0.1</name>
+				<name xml:lang="en">0.1</name>
+			</options>
+			<options>
+				<value>02.</value>
+				<name xml:lang="ko">0.2</name>
+				<name xml:lang="en">0.2</name>
+			</options>
+			<options>
+				<value>0.3</value>
+				<name xml:lang="ko">0.3</name>
+				<name xml:lang="en">0.3</name>
+			</options>
+			<options>
+				<value>0.4</value>
+				<name xml:lang="ko">0.4</name>
+				<name xml:lang="en">0.4</name>
+			</options>
+			<options init="true">
+				<value>0.5</value>
+				<name xml:lang="ko">0.5</name>
+				<name xml:lang="en">0.5</name>
+			</options>
+			<options>
+				<value>0.6</value>
+				<name xml:lang="ko">0.6</name>
+				<name xml:lang="en">0.6</name>
+			</options>
+			<options>
+				<value>0.7</value>
+				<name xml:lang="ko">0.7</name>
+				<name xml:lang="en">0.7</name>
+			</options>
+			<options>
+				<value>0.8</value>
+				<name xml:lang="ko">0.8</name>
+				<name xml:lang="en">0.8</name>
+			</options>
+			<options>
+				<value>0.9</value>
+				<name xml:lang="ko">0.9</name>
+				<name xml:lang="en">0.9</name>
+			</options>
+			<options>
+				<value>1.0</value>
+				<name xml:lang="ko">1.0</name>
+				<name xml:lang="en">1.0</name>
+			</options>
+		</var>
+
+		<var id="title_visibility">
+			<type>select</type>
+			<name xml:lang="ko">제목, 내용 보이기</name>
+			<name xml:lang="en">title visibility</name>
+			<description xml:lang="ko">헤당 글의 제목과 내용을 보여줄지 선택합니다. (기본값: yes)</description>
+			<description xml:lang="en">Set visibility of the titles. (no as default)</description>
+			<options>
+				<value>true</value>
+				<name xml:lang="ko">예</name>
+				<name xml:lang="en">YES</name>
+			</options>
+			<options>
+				<value>false</value>
+				<name xml:lang="ko">아니오</name>
+				<name xml:lang="en">NO</name>
+			</options>
+		</var>
+		<var id="overlay_position">
+			<type>select</type>
+			<name xml:lang="ko">제목, 내용 위치</name>
+			<name xml:lang="en">title position</name>
+			<description xml:lang="ko">헤당 글의 제목과 내용을 어디에 보여줄지 선택합니다. (기본값: 아래)</description>
+			<description xml:lang="en">Set position of the titles. (bottom as default)</description>
+			<options>
+				<value>bottom</value>
+				<name xml:lang="ko">아래</name>
+				<name xml:lang="en">BOTTOM</name>
+			</options>
+			<options>
+				<value>top</value>
+				<name xml:lang="ko">위</name>
+				<name xml:lang="en">TOP</name>
+			</options>
+		</var>
+		<var id="title_color">
+			<type>color</type>
+			<name xml:lang="ko">제목 글자색</name>
+			<name xml:lang="en">title color</name>
+			<description xml:lang="ko">제목 글자색입니다.(기본값: 투명)</description>
+			<description xml:lang="en">Set color of the titles. (transparent as default)</description>
+		</var>
+		<var id="title_length">
+			<type>text</type>
+			<name xml:lang="ko">제목 길이 자르기</name>
+			<name xml:lang="en">title length</name>
+			<description xml:lang="ko">제목이 길경우 설정하신 길이로 잘라지고 ".." 가 붙습니다. (기본값: 14자)</description>
+			<description xml:lang="en">Set limitation of the titles. (14 chars as default)</description>
+		</var>
+		<var id="title_size">
+			<type>text</type>
+			<name xml:lang="ko">제목 폰트 크기</name>
+			<name xml:lang="en">title size</name>
+			<description xml:lang="ko">제목글자의 크기를 설정합니다. (기본값: 10px, css 형식의 사이즈 모두 OK)</description>
+			<description xml:lang="en">Set size of the titles. (10px as default)</description>
+		</var>
+		<var id="title_font">
+			<type>text</type>
+			<name xml:lang="ko">제목 폰트</name>
+			<name xml:lang="en">title font</name>
+			<description xml:lang="ko">제목  폰트를 설정합니다.(기본값: "나눔고딕 web","NanumGothic","NanumGothicOTF","나눔고딕","Malgun Gothic","Trebuchet MS","Lucida Grande","Tahoma","Helvetica","Arial",sans-serif, css 형식의 font-family)</description>
+			<description xml:lang="en">Set font-family of the titles. ("나눔고딕 web","NanumGothic","NanumGothicOTF","나눔고딕","Malgun Gothic","Trebuchet MS","Lucida Grande","Tahoma","Helvetica","Arial",sans-serif as default)</description>
+		</var>
+
+		<var id="content_color">
+			<type>color</type>
+			<name xml:lang="ko">내용 글자색</name>
+			<name xml:lang="en">content color</name>
+			<description xml:lang="ko">내용 글자색입니다.(기본값: 투명)</description>
+			<description xml:lang="en">Set color of the titles. (transparent as default)</description>
+		</var>
+		<var id="content_length">
+			<type>text</type>
+			<name xml:lang="ko">내용 길이 자르기</name>
+			<name xml:lang="en">content length</name>
+			<description xml:lang="ko">내용이 길경우 설정하신 길이로 잘라지고 ".." 가 붙습니다. (기본값: 100자)</description>
+			<description xml:lang="en">Set limitation of the titles. (14 chars as default)</description>
+		</var>
+		<var id="content_size">
+			<type>text</type>
+			<name xml:lang="ko">내용 폰트 크기</name>
+			<name xml:lang="en">content size</name>
+			<description xml:lang="ko">내용글자의 크기를 설정합니다. (기본값: 10px, css 형식의 사이즈 모두 OK)</description>
+			<description xml:lang="en">Set size of the titles. (10px as default)</description>
+		</var>
+		<var id="content_font">
+			<type>text</type>
+			<name xml:lang="ko">내용 폰트</name>
+			<name xml:lang="en">title font</name>
+			<description xml:lang="ko">내용  폰트를 설정합니다.(기본값: "나눔고딕 web","NanumGothic","NanumGothicOTF","나눔고딕","Malgun Gothic","Trebuchet MS","Lucida Grande","Tahoma","Helvetica","Arial",sans-serif, css 형식의 font-family)</description>
+			<description xml:lang="en">Set font-family of the titles. ("나눔고딕 web","NanumGothic","NanumGothicOTF","나눔고딕","Malgun Gothic","Trebuchet MS","Lucida Grande","Tahoma","Helvetica","Arial",sans-serif as default)</description>
+		</var>
+
+		<var id="writer_color">
+			<type>color</type>
+			<name xml:lang="ko">작성자 글자색</name>
+			<name xml:lang="en">writer color</name>
+			<description xml:lang="ko">작성자 글자색입니다.(기본값: 투명)</description>
+			<description xml:lang="en">Set color of the titles. (transparent as default)</description>
+		</var>
+		<var id="writer_size">
+			<type>text</type>
+			<name xml:lang="ko">작성자 폰트 크기</name>
+			<name xml:lang="en">writer size</name>
+			<description xml:lang="ko">작성자글자의 크기를 설정합니다. (기본값: 10px, css 형식의 사이즈 모두 OK)</description>
+			<description xml:lang="en">Set size of the titles. (10px as default)</description>
+		</var>
+		<var id="writer_font">
+			<type>text</type>
+			<name xml:lang="ko">작성자 폰트</name>
+			<name xml:lang="en">writer font</name>
+			<description xml:lang="ko">작성자 폰트를 설정합니다.(기본값: "나눔고딕 web","NanumGothic","NanumGothicOTF","나눔고딕","Malgun Gothic","Trebuchet MS","Lucida Grande","Tahoma","Helvetica","Arial",sans-serif, css 형식의 font-family)</description>
+			<description xml:lang="en">Set font-family of the titles. ("나눔고딕 web","NanumGothic","NanumGothicOTF","나눔고딕","Malgun Gothic","Trebuchet MS","Lucida Grande","Tahoma","Helvetica","Arial",sans-serif as default)</description>
+		</var>
+	</extra_vars>
+</widget>

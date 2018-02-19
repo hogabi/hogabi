@@ -1,0 +1,44 @@
+<!--@if($widgetstyle_extra_var->ws_colorset == "black")-->
+    {@ $_wsClassName = "black"}
+<!--@elseif($widgetstyle_extra_var->ws_colorset == "white")-->
+    {@ $_wsClassName = "white"}
+<!--@else-->
+    {@ $_wsClassName = $layout_info->colorset}
+<!--@end-->
+
+<!--%import("style.css")-->
+{@ $ws_more_url = trim($widgetstyle_extra_var->ws_more_url); }
+
+<!--@if($widgetstyle_extra_var->ws_width)-->
+    {@ $ws_width = trim($widgetstyle_extra_var->ws_width);}
+<!--@else-->
+    {@ $ws_width = "400";}
+<!--@end-->
+
+
+
+<div class="simpleWidgetStyle {$_wsClassName}">
+
+    
+    
+        <!--@if($ws_more_url)-->
+            <!--@if(strtolower(substr($ws_more_url,0,4))=='http')-->
+                <a href="{$ws_more_url}" class="widgetMoreLink">
+
+            <!--@else-->
+                <a href="http://{$ws_more_url}" class="widgetMoreLink">
+            <!--@end-->
+                <div style="float:left; width:{$ws_width}px;">
+                    <h2>{$widgetstyle_extra_var->ws_title}</h2>    
+                </div>
+                </a>
+        <!--@else-->
+            <div style="float:left; width:{$ws_width}px;">
+                <h2>{$widgetstyle_extra_var->ws_title}</h2>    
+            </div>        
+        <!--@end-->
+        
+        
+    {$widget_content}
+    
+</div>

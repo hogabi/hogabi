@@ -1,0 +1,34 @@
+  <div class="nav_wrapper">
+  <nav class="menu">
+    <? $inx = 1 ?>
+    <? $liinx = 1 ?>
+    {@ $j = 1 }
+    <? $idinx = 'sjnavi'.$inx ?>
+    <? $li_idinx = 'sjnavili'.$liinx ?>
+	<ul>
+		<li loop="$global_nav->list=>$key1,$val1" >
+            
+              
+            <a href="{$val1['href']}" target="_blank"|cond="$val1['open_window']=='Y'" id="{@ echo ('sjnavili'.$j) }" 
+           class="<? echo ('sjnavilifirst'.$j)  ?>"  <? echo ("onmouseover=activeGNB('$idinx','$li_idinx'); onfocus=activeGNB('$idinx','$li_idinx');") ?> >{$val1['link']}</a>              
+
+
+<!--		   
+            <? if ($inx == 1) $sjdisplay = 'display:block'; ?>
+            <? if ($inx > 1) $sjdisplay = 'display:none'; ?>
+-->
+		   <ul cond="$val1['list']" id="<? echo ($idinx) ?>" style="<? echo $sjdisplay ?>">
+				<li loop="$val1['list']=>$key2,$val2" >
+				   <a href="{$val2['href']}" target="_blank"|cond="$val2['open_window']=='Y'">{$val2['link']}</a>
+				</li>
+			</ul>
+        
+        <? $inx++ ?>
+        <? $liinx++ ?>
+        {@ $j++ }
+        <? $idinx = 'sjnavi'.$inx ?>
+        <? $li_idinx = 'sjnavili'.$liinx?>
+		</li>
+	</ul>
+</nav>
+</div>

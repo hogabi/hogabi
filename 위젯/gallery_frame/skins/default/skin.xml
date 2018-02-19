@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<skin>
+  <title xml:lang="ko">Gallery Frame default skin</title>
+  <title xml:lang="en">Gallery Frame default skin</title>
+  <maker email_address="zirho6@gmail.com" link="http://www.zirho.co.kr" date="2010.01.01">
+    <name xml:lang="ko">zirho</name>
+    <name xml:lang="en">zirho</name>
+    <description xml:lang="ko">Gallery Frame 위젯의 기본 스킨입니다.</description>
+    <description xml:lang="en">This is default skin of Gallery Frame Widget.</description>
+  </maker>
+</skin>

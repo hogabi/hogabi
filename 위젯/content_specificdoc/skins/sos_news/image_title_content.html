@@ -1,0 +1,52 @@
+<div class="widgetZineA">
+
+{@
+ $_idx=0;
+}
+
+<!--@foreach($widget_info->content_items as $key => $item)-->
+
+
+
+    <!--@for($j=0,$c=count($widget_info->option_view_arr);$j<$c;$j++)-->
+
+        <!--@if($widget_info->option_view_arr[$j]=='title')-->
+    
+
+       
+
+				<!--@if($_idx <= 0)--> 
+				<div class="thumbArea" style="width:{$widget_info->thumbnail_width}px;margin-right:-{$widget_info->thumbnail_width}px;">
+					<a href="{$item->getLink()}" class="thumb" style="width:{$widget_info->thumbnail_width}px;height:{$widget_info->thumbnail_height}px">
+						<!--@if($item->getThumbnail())-->
+							<img src="{$item->getThumbnail()}" style="width:{$widget_info->thumbnail_width}px;height:{$widget_info->thumbnail_height}px" />
+						<!--@end-->
+					</a>
+				</div>
+				<!--@end-->
+
+       
+                <div class="titleArea" style="color: dimgrey;">
+                    <a href="{$item->getLink()}" id="titleArea-title">{$item->getTitle($widget_info->subject_cut_size)}</a>
+                </div>
+				
+               <!--@if($_idx <= 0)--> 
+                <div class="text">
+                    {$item->getContent()}
+                </div>
+				<!--@end-->       
+                     
+
+
+        <!--@end-->
+
+
+    <!--@end-->
+
+{@$_idx++}
+<!--@end-->
+
+</div>
+
+
+

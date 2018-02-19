@@ -1,0 +1,62 @@
+@charset "utf-8";
+
+/* .hogabi-webzine-container{margin:0; padding:0; background-color:#fff}
+배경색 */
+.hogabi-webzine-container{margin:0; padding:0; background-color:#fff}
+
+
+/* .hogabi-webzine{margin:0; padding:0; list-style:none; border-top:1px solid #efefef; border-bottom:1px solid #efefef}
+상단 하단 구분선 */
+/* .hogabi-webzine{margin:0; padding:0; list-style:none; border-top:1px solid #ff0000; border-bottom:1px solid #fff000}
+*/
+
+.width-190 {width: 190px;}
+.width-90 {width: 90px;}
+
+.hogabi-webzine ul{padding-left: 0px;  margin: 0px};
+/* .hogabi-webzine li{margin:0; padding:14px 0; border-bottom:1px dotted #efefef}
+중간선
+*/
+.hogabi-webzine li{margin:0; padding-left:7px; height: 63px; border-bottom:1px dotted #000000}
+
+
+/*마우스 올라왔을때 배경 색
+*/
+.hogabi-webzine li:hover{background-color:#ffffff}
+
+/*.hogabi-webzine li:last-child{border-bottom-color:#fff}
+   하단선 출력 부분 */
+.hogabi-webzine li:last-child{border-bottom-color:#000}
+/* 작성자 */
+.hogabi-webzine li p{margin:0; padding:0 5px 0 0; line-height:1.5; font-family:돋움,sans-serif; font-size:13px; color:#000000}
+
+.hogabi-webzine li a{color:#000000; outline:none}
+
+
+/*
+제목 및 내용 글자색
+*/
+/* 제목 글자색 및 크기
+.hogabi-webzine li .titleArea{margin-bottom:10px; font-size:20px; color:#000000; font-weight:bold}
+*/
+.hogabi-webzine li .titleArea{margin-bottom:10px; font-size:1.0rem; color:#000000; font-weight:bold}
+
+.hogabi-webzine li .category{color:darkgray; font-size:0.8rem; float : left;}
+.hogabi-webzine li .title{color:black; font-size:0.9rem; float : left;}
+
+.hogabi-webzine li .date{margin-top:3px; color:#000000}
+.hogabi-webzine li .icon{display:inline-block; margin-left:3px; vertical-align:top}
+.hogabi-webzine li:hover .title,
+.hogabi-webzine li a:hover .title,
+.hogabi-webzine li a:focus .title{font-weight:bold; letter-spacing:-1px; color:#000000}
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	.hogabi-webzine li:hover .title,
+	.hogabi-webzine li a:hover .title,
+	.hogabi-webzine li a:focus .title{font-weight:normal; letter-spacing:0}
+}
+.hogabi-webzine li:hover .summary a{color:#000000}
+.hogabi-webzine .webzine-thumb{position:relative; float:left; margin-right:3px}
+.hogabi-webzine .webzine-thumb span.noimage{position:absolute; background-color:#000000; border:1px solid #efefef; line-height:75px; text-align:center; font-family:'Nanum Gothic','Malgun Gothic',돋움,sans-serif; font-weight:700; font-size:17px; color:#000000}
+
+.x #zonePageContent .hogabi-webzine{margin:0; padding:0}
+.x #zonePageContent .hogabi-webzine li{margin:0; padding:1px 0; border-bottom:1px dotted #efefef}

@@ -1,0 +1,115 @@
+<load target="css/gallery.css" />
+<load target="js/jquery.jcarousel.min.js" type="body" />
+<load cond="!$global['jtouch']" target="js/jquery.mobile.touch.min.js" type="body" />
+{@ $__Context->global['jtouch'] = 1}
+
+<!--@if(!$global['csi'])-->{@ $__Context->global['csi'] = 1}<!--@endif-->{@ $__Context->global['csi']++}
+
+<div class="smartGalleryWrap newClear">
+	<h3 class="galleryTitle">{$widget_info->gallery_title}</h3>
+	<ul id="smartGallery{$global['csi']}" class="smartGallery newClear">
+		<li loop="$widget_info->content_items=>$key,$item">
+			<a href="{$item->getLink()}">
+				<img src="{$item->getThumbnail()}" alt="">
+				<block loop="$widget_info->option_view_arr=>$k,$v">
+					<!--@if($v=='title')-->
+						<h5 class="title">{strip_tags($item->getTitle($widget_info->subject_cut_size))}</h5>
+					<!--@else if($v=='nickname')-->
+						<p class="ext">{$item->getNickName()}</p>
+					<!--@else if($v=='regdate')-->
+						<p class="ext">{$item->getRegdate("Y-m-d")} {$item->getRegdate("H:i")}</p>
+					<!--@else if($v=='extravar')-->
+						<p class="ext">{$item->getExtraVar()}</p>
+					<!--@endif-->
+				</block>
+				<span class="gallery_arrow"></span>
+			</a>
+		</li>
+	</ul>
+</div>
+
+<script>
+jQuery(document).ready(function($) {
+$(function() {
+	var $carousel = $('#smartGallery{$global["csi"]}');
+
+	if( $carousel.length ) {
+		var scrollCount;
+		function getWindowWidth() {
+			if( $(window).width() < 480 ) {
+				scrollCount = 1;
+			} else if( $(window).width() < 768 ) {
+				scrollCount = 2;
+			} else if( $(window).width() < 960 ) {
+				scrollCount = 3;
+			} else {
+				scrollCount = 4;
+			}
+		}
+
+		function initCarousel( carousels ) {
+			carousels.each(function() {
+				var $this  = $(this);
+				$this.jcarousel({
+					animation           : 600,
+					easing              : 'easeOutCubic',
+					scroll              : scrollCount,
+					itemVisibleInCallback : function() {
+						onBeforeAnimation : resetPosition( $this );
+						onAfterAnimation  : resetPosition( $this );
+					}
+				});
+			});
+		}
+
+		function adjustCarousel() {
+			$carousel.each(function() {
+				var $this    = $(this),
+					$lis     = $this.children('li'),
+					newWidth = $lis.length * $lis.first().outerWidth( true ) + 100;
+				getWindowWidth();
+				// Resize only if width has changed
+				if( $this.width() !== newWidth ) {
+					$this.css('width', newWidth )
+						 .data('resize','true');
+					initCarousel( $this );
+					$this.jcarousel('scroll', 1);
+					var timer = window.setTimeout( function() {
+						window.clearTimeout( timer );
+						$this.data('resize', null);
+					}, 600 );
+				}
+			});
+		}
+
+		function resetPosition( elem ) {
+			if( elem.data('resize') )
+				elem.css('left', '0');
+		}
+
+		getWindowWidth();
+
+		initCarousel( $carousel );
+
+		// Detect swipe gestures support
+		var $jc = $carousel.parent('.jcarousel-clip'),
+			$jcNext = $jc.siblings('.jcarousel-next'),
+			$jcPrev = $jc.siblings('.jcarousel-prev');
+			
+		$carousel.on('swipeleft',function() {
+			$jcNext.trigger('click');
+		}).on('swiperight',function() {
+			$jcPrev.trigger('click');
+		});
+
+		// Window resize
+		$(window).on('resize', function() {
+			var timer = window.setTimeout( function() {
+				window.clearTimeout( timer );
+				adjustCarousel();
+			}, 30 );
+		});
+	}
+});
+});
+</script>

@@ -1,0 +1,41 @@
+<load target="hogabi_webzine.css" />
+<div class="hogabi-webzine-container newclearfix">
+	<ul class="hogabi-webzine" style="list-style: none; padding-left: 0px; margin: 1px; ">
+		<li loop="$widget_info->content_items=>$key,$item" style="border-bottom:0.5px dotted #000000; height: 62px; margin-left: 7px" >
+
+
+			<block loop="$widget_info->option_view_arr=>$k,$v">
+				<!--@if($v=='title')-->
+					<div class="titleArea" style="padding: 1px">
+                        <div class="width-190">                     
+                            <div cond="$widget_info->show_category=='Y' && $item->get('category_srl')" class="category width-190">[{$item->getCategory()}] 
+                            </div>
+
+                            <div class="width-190">                     
+                            <a href="{$item->getLink()}" target="_blank"|cond="$widget_info->new_window" >
+                                <span class="title width-190">{strip_tags($item->getTitle($widget_info->subject_cut_size))}</span>
+                                <span cond="$widget_info->show_icon=='Y'" class="icon">{$item->printExtraImages()}</span>
+                            </a>
+                            </div>
+                        </div>
+
+                        <div class="webzine-thumb width-90" style="width:{$widget_info->thumbnail_width}px; height:{$widget_info->thumbnail_height}px">
+                            <img cond="$item->getThumbnail()" src="{$item->getThumbnail()}" alt="" style="width:{$widget_info->thumbnail_width}px; height:{$widget_info->thumbnail_height}px" />
+                            <span cond="!$item->getThumbnail()" class="noimage" style="width:{$widget_info->thumbnail_width-2}px; height:{<1widget_info-></1widget_info->thumbnail_height-2}px">No Image</span>
+                        </div>
+				    
+				    </div>
+
+
+				
+				<!--@else if($v=='content')-->
+					<p class="summary"><a href="{$item->getLink()}" target="_blank"|cond="$widget_info->new_window" >{$item->getContent()}</a></p>
+				<!--@else if($v=='nickname')-->
+					<p class="author">{$item->getNickName($widget_info->nickname_cut_size)}</p>
+				<!--@else if($v=='regdate')-->
+					<p class="date">{$item->getRegdate("Y-m-d")} {$item->getRegdate("H:i")}</p>
+				<!--@endif-->
+			</block>
+		</li>
+	</ul>
+</div>

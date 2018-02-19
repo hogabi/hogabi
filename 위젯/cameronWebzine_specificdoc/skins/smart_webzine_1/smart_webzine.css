@@ -1,0 +1,26 @@
+@charset "utf-8";
+.smart-webzine-container{margin:0; padding:0; background-color:#fff}
+.smart-webzine{margin:0; padding:0; list-style:none; border-top:1px solid #efefef; border-bottom:1px solid #efefef}
+.smart-webzine li{margin:0; padding:14px 0; border-bottom:1px dotted #efefef}
+.smart-webzine li:hover{background-color:#fafafa}
+.smart-webzine li:last-child{border-bottom-color:#fff}
+.smart-webzine li p{margin:0; padding:0 5px 0 0; line-height:1.5; font-family:돋움,sans-serif; font-size:11px; color:#808080}
+.smart-webzine li a{color:#808080; outline:none}
+.smart-webzine li .titleArea{margin-bottom:10px; font-size:12px; color:#484848}
+.smart-webzine li .category{color:#fd7700}
+.smart-webzine li .date{margin-top:3px; color:#fd7700}
+.smart-webzine li .icon{display:inline-block; margin-left:3px; vertical-align:top}
+.smart-webzine li:hover .title,
+.smart-webzine li a:hover .title,
+.smart-webzine li a:focus .title{font-weight:bold; letter-spacing:-1px; color:#fd7700}
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	.smart-webzine li:hover .title,
+	.smart-webzine li a:hover .title,
+	.smart-webzine li a:focus .title{font-weight:normal; letter-spacing:0}
+}
+.smart-webzine li:hover .summary a{color:#585858}
+.smart-webzine .webzine-thumb{position:relative; float:left; margin-right:8px}
+.smart-webzine .webzine-thumb span.noimage{position:absolute; display:block; background-color:#f8f8f8; border:1px solid #efefef; line-height:75px; text-align:center; font-family:'Nanum Gothic','Malgun Gothic',돋움,sans-serif; font-weight:700; font-size:12px; color:#dedede}
+
+.x #zonePageContent .smart-webzine{margin:0; padding:0}
+.x #zonePageContent .smart-webzine li{margin:0; padding:14px 0; border-bottom:1px dotted #efefef}

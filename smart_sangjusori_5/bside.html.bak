@@ -1,0 +1,5 @@
+<aside id="sidebar" class="<!--@if($layout_info->side=='right')-->fright <!--@endif-->newclearfix">
+
+
+
+</aside>

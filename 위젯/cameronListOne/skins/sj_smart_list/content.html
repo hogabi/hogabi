@@ -1,0 +1,24 @@
+<load target="smart_list.css" />
+
+<div class="smart-list-container newclearfix" style="width: {$widget_info->sj_width}px;display: inline-block">
+	<ul class="smart-list">
+		<li loop="$widget_info->content_items=>$key,$item" class="newclearfix">
+			<a href="{$item->getLink()}" target="_blank"|cond="$widget_info->new_window" >
+				<p class="titleArea">
+					<strong cond="$widget_info->show_category=='Y' && $item->get('category_srl')" class="category">[{$item->getCategory()}] </strong><span class="title">{strip_tags($item->getTitle($widget_info->subject_cut_size))}</span><span class="replynum" cond="$widget_info->show_comment_count=='Y' && $item->getCommentCount()" title="Comments"> {$item->getCommentCount()}</span><span cond="$widget_info->show_icon=='Y'" class="icon">{$item->printExtraImages()}</span>
+				</p>
+				<p class="adArea">
+				<block loop="$widget_info->option_view_arr=>$k,$v">
+					<!--@if($v=='nickname')-->
+						<span class="author">{$item->getNickName($widget_info->nickname_cut_size)}</span>
+					<!--@else if($v=='regdate')-->
+						<span class="date">{$item->getRegdate("Y-m-d")}</span>
+					<!--@else if($v=='extravar')-->
+						<span class="ext">{$item->getExtraVar()}</span>
+					<!--@endif-->
+				</block>
+				</p>
+			</a>
+		</li>
+	</ul>
+</div>

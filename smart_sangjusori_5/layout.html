@@ -1,0 +1,68 @@
+<include target="_settings.html" />
+<body id="style-{$layout_info->style}" class="<!--@if($layout_info->custom_cs)-->cs<!--@else-->{$layout_info->colorset}<!--@endif-->">
+
+<div id="cameron-body">
+
+	<header id="header" class="cameron-container newclearfix">
+		<div  id="snslink">
+			<include target="snslink.html" />
+		</div>
+
+		<include cond="$layout_info->sign!='off'" target="sign.html" />
+
+		<a href="{$logo_link}" id="logo">
+			<!--@if($layout_info->logo)--><img src="{$layout_info->logo}" alt="{Context::getSiteTitle()}"|cond="$current_version > '1.7.0.0'" title="{Context::getSiteTitle()}"|cond="$current_version > '1.7.0.0'" />
+			<!--@else--><span class="smart-logo" title="{Context::getSiteTitle()}"|cond="$current_version > '1.7.0.0'"></span><!--@endif-->
+		</a>
+
+		<div id="lastUpdateDate">
+			<include target="lastUpdateQuery.php" />
+		</div>   
+   
+    </header>
+
+
+
+	<header id="header1" class="cameron-container newclearfix">
+				<include target="navigation1.html" />
+  </header>
+
+	<br>	<br> <br>
+
+
+	<section id="contents" class="cameron-container newclearfix">
+
+
+		<header class="{$layout_info->type}-page-header <!--@if($layout_info->sign=='off' &&
+		$layout_info->search=='off')-->n-page-header <!--@endif-->newclearfix">
+			<h1 cond="$layout_info->type=='sub99'" class="page-title"><!--@if($mi->title)-->{$mi->title}<!--@elseif($nav3rd)-->{$nav3rd}<!--@elseif($nav2nd)-->{$nav2nd}<!--@else-->{$nav1st}<!--@endif--></h1>
+		</header>
+
+
+		<section id="sub"|cond="$layout_info->side!='off'" class="<!--@if ($layout_info->side=='left' || $layout_info->side=='right')-->withs <!--@if($layout_info->side=='left')-->fright <!--@endif--><!--@endif-->newclearfix">
+
+			<div id="content" class="content newclearfix<!--@if($module_info->module=='page')--> widget-page<!--@endif-->" style="width: 760px;">
+				<block cond="$layout_info->board_cate!='off'">
+					<img cond="$module_info->module=='board' && $mi->use_category=='Y'" class="zbxe_widget_output" widget="cameronCategory" skin="smart" colorset="layout" srl="{$module_info->module_srl}" />
+				</block>
+				{$content}
+			</div>
+
+		</section>
+
+			<include cond="$layout_info->type=='sub' && ($layout_info->side=='right')" target="bside.html" />
+
+			<include cond="$layout_info->type=='sub' && ($layout_info->side=='left')" target="aside.html" />            
+                                    
+            <include cond="$layout_info->type=='main'" target="bside.html" />
+            
+	</section>
+
+
+	<include cond="$layout_info->type=='main'" target="footer.html" />
+
+</div>
+
+<a href="#" id="sTop" title="Back to Top" style="display: none;">XE{$current_version} Layout{$layout_info->version}</a>
+
+<include cond="$layout_info->cpreview=='on' && $IE!='7'" target="cpreview.html" />

@@ -1,0 +1,58 @@
+<load target="smart_news.css" />
+
+<!--@if(!$global['csi'])-->{@ $__Context->global['csi'] = 1}<!--@endif-->{@ $__Context->global['csi']++}
+
+<div id="smart-news{$global['csi']}" class="smart-news newclearfix">
+	<ul class="thumbList" style="width:{$widget_info->thumbnail_width}px; height:{$widget_info->thumbnail_height}px">
+		<li loop="$widget_info->content_items=>$key,$item">
+			<div class="news_thumb" style="width:{$widget_info->thumbnail_width}px; height:{$widget_info->thumbnail_height}px">
+				<img cond="$item->getThumbnail()" src="{$item->getThumbnail()}" alt="" style="width:{$widget_info->thumbnail_width}px; height:{$widget_info->thumbnail_height}px" />
+				<span cond="!$item->getThumbnail()" class="noimage" style="width:{$widget_info->thumbnail_width}px; height:{$widget_info->thumbnail_height-40}px">No<br />Image</span>
+			</div>
+		</li>
+	</ul>
+	<ul class="titleList">
+		{@$i=0}
+		<li loop="$widget_info->content_items=>$key,$item" class="active"|cond="$i==0">
+			<block loop="$widget_info->option_view_arr=>$k,$v">
+			<!--@if($v=='title')-->
+				<a href="{$item->getLink()}" target="_blank"|cond="$widget_info->new_window" >{strip_tags($item->getTitle($widget_info->subject_cut_size))}<span cond="$widget_info->show_icon=='Y'" class="icon">{$item->printExtraImages()}</span></a>
+				<em cond="$widget_info->show_comment_count=='Y' && $item->getCommentCount()" class="replyNum" title="Replies"><a href="{$item->getLink()}#comment">{$item->getCommentCount()}</a></em>
+			<!--@else if($v=='nickname')-->
+				<span class="author">{$item->getNickName($widget_info->nickname_cut_size)}</span>
+			<!--@else if($v=='regdate')-->
+				<span class="date">{$item->getRegdate("Y-m-d")}</span>
+			<!--@endif-->
+			</block>
+			{@$i++}
+		</li>
+	</ul>
+</div>
+
+<script>
+jQuery(function($) {
+$(function() {
+	var $newsi = $('#smart-news{$global["csi"]}'),
+		$titleList = $newsi.find('ul.titleList'),
+		$thumbList = $newsi.find('ul.thumbList');
+	$thumbList.each(function() {
+		var $this = $(this);
+		$this.find('li').stop(true,true).hide().first().addClass('active').stop(true,true).show();
+		$this.find('li').first().addClass('active').stop(true,true).show();
+	});
+	$titleList.find('li').on('mouseover focusin', function() {
+		var $this = $(this),
+			$thisi = $this.index(),
+			$thisThumb = $this.parent().prev('ul.thumbList'),
+			$thisTitle = $this.parent('ul.titleList');
+		$thisTitle.find('li.active').removeClass('active');
+		$this.addClass('active');
+		$thisThumb.find('li').each(function(j){
+			if(j==$thisi) $(this).fadeIn();
+			else $(this).stop(true,true).hide();
+		});
+	});
+});
+});
+
+</script>

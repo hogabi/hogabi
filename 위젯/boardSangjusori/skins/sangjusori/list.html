@@ -1,0 +1,33 @@
+<!--%import("css/sangjusori.css")-->
+<div class="popularSimple newclearfix">
+
+    <ul>
+        <li class="active sangjusori-title" onmouseover="jQuery(this).parent().find('li.active').removeClass('active');jQuery(this).addClass('active sangjusori-title');return false;"><a href="#" onclick="return false;">{$widget_info->tab_title_1}</a>
+            <!--@if($widget_info->newest_documents)-->
+            <ul>
+                <!--@foreach($widget_info->newest_documents as $k => $v)-->
+                <li class="sangjusori"><div class="sangjusori-number">{$k + 1}</div> <a href="{$v->getPermanentUrl()}">{strip_tags($v->getTitle($widget_info->subject_cut_size),'span')}</a></li>
+                <!--@end-->
+            </ul>
+            <!--@end-->
+        </li>
+        <li  onmouseover="jQuery(this).parent().find('li.active').removeClass('active');jQuery(this).addClass('active sangjusori-title');return false;"><a href="#" onclick="return false;">{$widget_info->tab_title_2}</a>
+            <!--@if($widget_info->newest_comments)-->
+            <ul>
+                <!--@foreach($widget_info->newest_comments as $k => $v)-->
+                <li class="sangjusori"><div class="sangjusori-number">{$k + 1}</div> <a href="{$v->getPermanentUrl()}">{strip_tags($v->getTitle($widget_info->subject_cut_size),'span')}</a></li>
+                <!--@end-->
+            </ul>
+            <!--@end-->
+        </li>
+        <li class="sangjusori-title" onmouseover="jQuery(this).parent().find('li.active').removeClass('active');jQuery(this).addClass('active sangjusori-title');return false;"><a href="#" onclick="return false;">{$widget_info->tab_title_3}</a>
+            <!--@if($widget_info->popular_documents)-->
+            <ul>
+                <!--@foreach($widget_info->popular_documents as $k => $v)-->
+                <li class="sangjusori"><div class="sangjusori-number">{$k + 1}</div> <a href="{$v->getPermanentUrl()}">{strip_tags($v->getTitle($widget_info->subject_cut_size),'span')}</a></li>
+                <!--@end-->
+            </ul>
+            <!--@end-->
+        </li>
+    </ul>
+</div>

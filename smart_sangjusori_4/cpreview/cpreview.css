@@ -1,0 +1,27 @@
+@charset "utf-8";
+#cpreview{position:fixed; _position:absolute; top:100px; left:0; overflow:hidden; z-index:99}
+#cpreview .stCols,
+#cpreview #typeList{position:relative; overflow:hidden}
+#cpreview a {color:#010101}
+#cpreview a:hover {text-decoration:none}
+
+#cpreview .blockPreview{width:187px; padding:49px 49px 5px 0}
+#cpreview .previewBody{background:#fff; width:187px; position:relative; overflow:hidden; border-bottom:1px solid #dbdbdb; }
+#cpreview .previewBut{position:absolute; top:49px; right:0; width:49px; height:49px; background:#415161 url(img/previewBtn.png) no-repeat center center}
+#cpreview .previewTitle{height:49px; background:#617c98 url(img/previewTitle.png) no-repeat 18px center}
+
+/* Colorset */
+#cpreview .previewColorset{position:relative; padding:21px 17px 11px 17px; border-right:7px solid #dbdbdb}
+#cpreview #colorsetList{margin:0; padding:0; list-style:none}
+#cpreview #colorsetList li{float:left; margin:0 10px 10px 0; padding:0}
+#cpreview #colorsetList li.line_end{margin-right:0}
+
+#cpreview .previewType{position:relative; padding:0 17px 21px 17px; border-right:7px solid #dbdbdb}
+#cpreview #typeList a{float:left; display:block; width:50px; height:50px; margin-right:10px; padding:8px; background-color:#f7f7f7; border:1px solid #d1d1d1; text-align:center}
+#cpreview #typeList a.active{background-color:#fff}
+#cpreview #typeList a.line_end{margin-right:0}
+#cpreview #typeList a div{height:39px; background-repeat:no-repeat; background-position:center center}
+#cpreview #typeList a .type_icon1{background-image:url(img/type1.png)}
+#cpreview #typeList a .type_icon2{background-image:url(img/type2.png)}
+#cpreview #typeList a span{font-size:11px; color:#7e7e7e; font-family:Arial, Helvetica, sans-serif, 돋움}
+

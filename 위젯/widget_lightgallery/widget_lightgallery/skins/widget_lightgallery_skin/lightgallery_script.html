@@ -1,0 +1,61 @@
+<script>
+jQuery(window).load(function() {
+  //썸네일 HOVER 설정
+  jQuery('.widget_lightgallery_skin #aniimated-thumbnials .gallery_item').hover(function(){
+    jQuery(this).children('.hover_bg').fadeIn(300);
+    jQuery(this).children('.hover_zoom').fadeIn(300);
+  }, function(){
+    jQuery(this).children('.hover_bg').fadeOut(300);
+    jQuery(this).children('.hover_zoom').fadeOut(300);
+  });
+
+  //Light Gallery 설정
+  jQuery('.widget_lightgallery_skin #aniimated-thumbnials').lightGallery({
+    mode                     : '{$gallery_obj->mode}',
+    cssEasing                : '{$gallery_obj->csseasing}',
+    speed                    : {$gallery_obj->speed},
+    backdropDuration         : {$gallery_obj->backdropduration},
+    hideBarsDelay            : {$gallery_obj->hidebarsdelay},
+    useLeft                  : {$gallery_obj->useleft},
+    closable                 : {$gallery_obj->closable},
+    loop                     : {$gallery_obj->loop},
+    escKey                   : {$gallery_obj->esckey},
+    keyPress                 : {$gallery_obj->keypress},
+    controls                 : {$gallery_obj->controls},
+    slideEndAnimatoin        : {$gallery_obj->slideendanimatoin},
+    hideControlOnEnd         : {$gallery_obj->hidecontrolonend},
+    mousewheel               : {$gallery_obj->mousewheel},
+    getCaptionFromTitleOrAlt : {$gallery_obj->getcaptionfromtitleoralt},
+    showAfterLoad            : {$gallery_obj->showafterload},
+    download                 : {$gallery_obj->download},
+    counter                  : {$gallery_obj->counter},
+    swipeThreshold           : {$gallery_obj->swipethreshold},
+    enableDrag               : {$gallery_obj->enabledrag},
+    enableTouch              : {$gallery_obj->enabletouch},
+
+    thumbnail                : {$gallery_obj->thumbnail},
+    animateThumb             : {$gallery_obj->animatethumb},
+    currentPagerPosition     : '{$gallery_obj->currentpagerposition}',
+    thumbWidth               : {$gallery_obj->thumbwidth},
+    thumbContHeight          : {$gallery_obj->thumbcontheight},
+    thumbMargin              : {$gallery_obj->thumbmargin},
+    toogleThumb              : {$gallery_obj->tooglethumb},
+    pullCaptionUp            : {$gallery_obj->pullcaptionup},
+    enableThumbDrag          : {$gallery_obj->enablethumbdrag},
+    enableThumbSwipe         : {$gallery_obj->enablethumbswipe},
+
+    autoplay                 : {$gallery_obj->autoplay},
+    pause                    : {$gallery_obj->pause},
+    progressBar              : {$gallery_obj->progressbar},
+    fourceAutoplay           : {$gallery_obj->fourceautoplay},
+    autoplayControls         : {$gallery_obj->autoplaycontrols},
+
+    fullScreen               : {$gallery_obj->fullscreen},
+    pager                    : {$gallery_obj->pager},
+    zoom                     : {$gallery_obj->zoom},
+    scale                    : {$gallery_obj->scale},
+    enableZoomAfter          : {$gallery_obj->enablezoomafter},
+    actualSize               : {$gallery_obj->actualsize}
+  });
+});
+</script>

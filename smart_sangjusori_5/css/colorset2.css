@@ -1,0 +1,119 @@
+::-moz-selection{background-color:#f8c119}
+::selection{background-color:#f8c119}
+
+.colorset2 #logo .smart-logo{background-image:url(../img/colorset2_logo.png)}
+.colorset2 #logo-bottom .smart-logo-bottom{background-image:url(../img/colorset2_logo_bottom.png)}
+.colorset2 #sTop:hover,
+.colorset2 #sTop:focus,
+.colorset2 .jcarousel-next:hover,
+.colorset2 .jcarousel-next:focus,
+.colorset2 .jcarousel-next:active,
+.colorset2 .jcarousel-prev:hover,
+.colorset2 .jcarousel-prev:focus,
+.colorset2 .jcarousel-prev:active,
+.colorset2 .more_plus .mpTitle a:hover,
+.colorset2 .more_plus .mpTitle a:focus{background-color:#f8c119}
+
+.colorset2 #sf-menu a.nav1st:hover,
+.colorset2 #sf-menu a.nav1st:focus,
+.colorset2 #sf-menu li:hover a.nav1st,
+.colorset2 #sf-menu li.current1 a.nav1st{border-top-color:#f8c119; border-bottom-color:#f8c119; color:#f8c119}
+.colorset2 #sf-menu ul li a:hover,
+.colorset2 #sf-menu ul li a:focus,
+.colorset2 #sf-menu ul li.sfHover a.nav2nd,
+.colorset2 #sf-menu ul li.current2 a.nav2nd,
+.colorset2 #sf-menu ul li.current3 a.nav3rd{color:#f8c119}
+.colorset2 .sf-arrows li a.nav1st:after{border-bottom-color:#f8c119}
+.colorset2 .sf-arrows ul li > .sf-with-ul:hover:after,
+.colorset2 .sf-arrows ul li > .sf-with-ul:focus:after,
+.colorset2 .sf-arrows ul li:hover > .sf-with-ul:after{color:#f8c119}
+.colorset2 #side_menu a.sm3rd-trigger.active:after,
+.colorset2 #side_menu a:hover,
+.colorset2 #side_menu a:focus,
+.colorset2 #side_menu li.current2 a.sm2nd,
+.colorset2 #side_menu li.current3 a.sm3rd{color:#f8c119}
+
+.colorset2 .smartGallery a:hover,
+.colorset2 .smartGallery a:focus{border-top-color:#f8c119; border-bottom-color:#f8c119}
+.colorset2 .tabs-nav li.active a,
+.colorset2 .tabsthumb-nav li.active a{border-top-color:#f8c119}
+.colorset2 .smartGallery a .gallery_arrow{border-bottom-color:#f8c119}
+
+.colorset2 a:hover,
+.colorset2 a > *:hover,
+.colorset2 #footer a:hover,
+.colorset2 #copyinfo a:hover,
+.colorset2 #bottom-nav li a:hover,
+.colorset2 .smart-list li .category,
+.colorset2 .smart-list li .replynum,
+.colorset2 .smart-list li:hover .title,
+.colorset2 .smart-news .titleList li.active a,
+.colorset2 .smart-webzine li .category,
+.colorset2 .smart-webzine li .date,
+.colorset2 .smart-webzine li:hover .title,
+.colorset2 .smart-webzine li a:hover .title,
+.colorset2 .smart-webzine li a:focus .title,
+.colorset2 .tabs-nav li a:hover,
+.colorset2 .tabs-nav li.active a,
+.colorset2 .contentList li.active a,
+.colorset2 .tabsthumb-nav li a:hover,
+.colorset2 .tabsthumb-nav li.active a{color:#f8c119}
+
+/*-----[Mobile Navigation]-----*/
+.colorset2 #TouchMe,
+.colorset2 #mobile-sign{background-color:#f8c119}
+.colorset2 #mobile-nav li.current1 a.nav1st{background-color:#f8c119}
+.colorset2 #mobile-nav li.current2 a.nav2nd,
+.colorset2 #mobile-nav li.current3 a.nav3rd{color:#f8c119}
+
+/*-----[Widgets]-----*/
+/* Category */
+.colorset2 .smart_category ul li.selected{border-top-color:#f8c119}
+.colorset2 .smart_category ul li.selected a{color:#f8c119}
+/* Intro Icon */
+.colorset2 .intro_icon li h3.title,
+.colorset2 .intro_icon li i.fa-stack-2x{color:#f8c119}
+/* Intro Panel */
+.colorset2 .intro_panel li:hover a,
+.colorset2 .intro_panel li a:hover,
+.colorset2 .intro_panel li a:hover h3,
+.colorset2 .intro_panel li a:hover p,
+.colorset2 .intro_panel li a:hover i{border-color:#f8c119; color:#f8c119}
+.colorset2 .intro_panel li:first-child a{background-color:#f8c119; border-color:#f8c119}
+.colorset2 .intro_panel li:first-child:hover a,
+.colorset2 .intro_panel li:first-child a:hover,
+.colorset2 .intro_panel li:first-child a:hover h3,
+.colorset2 .intro_panel li:first-child a:hover p,
+.colorset2 .intro_panel li:first-child a:hover i{color:#f8c119}
+/* Site Go */
+.colorset2 .smartSiteGo input.goGo{background-color:#f8c119}
+/* Popular */
+.colorset2 .tabs_items li a.tabs_active{border-top-color:#f8c119}
+.colorset2 .tabs_inner li p.text_date,
+.colorset2 .tabs_inner li a:hover p.text_title,
+.colorset2 .tabs_inner li a:focus p.text_title{color:#f8c119}
+/* News Ticker */
+.colorset2 .smart_news_ticker .news_arrow{border-left-color:#f8c119}
+
+
+/*-----[ BOARD ]-----*/
+/* Sketchbook */
+.colorset2 .bd a:focus,.bd input:focus,.bd button:focus,.bd textarea:focus,.bd select:focus{outline-color:#f8c119 !important}
+.colorset2 .bd .bg_color,
+.colorset2 .bd .bg_f_color{background-color:#f8c119; background:-moz-linear-gradient(#fff -50%,#f8c119 50%);background:-webkit-linear-gradient(#fff -50%,#f8c119 50%);background:linear-gradient(to bottom,#fff -50%,#f8c119 50%)}
+.colorset2 .bd .border_color,
+.colorset2 #bd_zine a:hover,
+.colorset2 #bd_zine a:focus,
+.colorset2 #bd_zine .select a{border-color:#f8c119 !important}
+.colorset2 .bd .cTab li.on{border-top-color:#f8c119 !important}
+.colorset2 .bd .cTab li.on a,
+.colorset2 #bd .replyNum,
+.colorset2 #bd .trackbackNum,
+.colorset2 .bd em,.bd .color,
+.colorset2 .bd .bolder,
+.colorset2 #bd_zine .info b,
+.colorset2 #bd_zine .info a,
+.colorset2 #bd_zine.card li:hover h3,
+.colorset2 #bd_zine.card li:focus h3{color:#f8c119 !important}
+.colorset2 #bd_zine.card2 li:hover{border-top-color:#f8c119 !important; border-bottom-color:#f8c119 !important}
+.colorset2 #bd_zine.card2 .hx .gallery_arrow{border-bottom-color:#f8c119 !important}

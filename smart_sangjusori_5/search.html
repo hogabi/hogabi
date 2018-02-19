@@ -1,0 +1,11 @@
+<div cond="$layout_info->search!='off'" class="searchbox newclearfix">
+	<form action="{getUrl()}" method="post" no-error-return-url="true" id="isSearch">
+		<input type="hidden" name="vid" value="{$vid}" />
+		<input type="hidden" name="mid" value="{$mid}" />
+		<input type="hidden" name="act" value="IS" />
+		<input type="hidden" name="where" value="{$where}" />
+		<input type="hidden" name="search_target" value="title_content" />
+		<input type="text" name="is_keyword" id="search_input" class="inputText" title="{$lang->cmd_search}" placeholder="{$lang->cmd_search}" value="{$is_keyword}" />
+		<input type="image" src="img/search.gif" class="submit search_submit" alt="{$lang->cmd_search}" />
+	</form>
+</div>

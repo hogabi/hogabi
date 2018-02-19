@@ -1,0 +1,11 @@
+@charset "utf-8";
+
+.widgetZineA{}
+.thumbArea{display: block; }
+.titleArea{margin-bottom:4px;padding: 15px;}
+#titleArea-title{font-size:2rem;font-weight:bold; color: dimgrey;}
+.text{ margin-bottom:4px; font-size: 1rem; padding: 15px;}
+
+
+
+

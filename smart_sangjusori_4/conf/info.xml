@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="0.2">
+<title xml:lang="ko">상주의소리_20180201</title>
+<description xml:lang="ko">상주의소리_20180201_renewal</description>
+<version>1.0.0</version>
+<date>2018-02-01</date>
+<author email_address="hogabi@gmail.com" link="http://hogabi.co.kr/">
+	<name xml:lang="ko">조호갑</name>
+</author>
+
+<extra_vars>
+	<group>
+		<title xml:lang="ko">기본설정</title>
+		<var name="logo" type="image">
+			<title xml:lang="ko">로고이미지</title>
+		</var>
+		<var name="logo_y" type="text">
+			<title xml:lang="ko">로고이미지 위치</title>
+			<description xml:lang="ko">기본 10(px) ※ 숫자만 입력하세요. 입력한 숫자만큼 상단에서 띄웁니다.</description>
+		</var>
+		<var name="logo_link" type="text">
+			<title xml:lang="ko">로고 링크URL</title>
+			<description xml:lang="ko">예) /home ※ 입력하지 않으면 홈으로 이동합니다.</description>
+		</var>
+		<var name="type" type="radio">
+			<title xml:lang="ko">메인/서브형</title>
+			<options value="main" src="conf/type_main.png">
+				<title xml:lang="ko">메인형</title>
+			</options>
+			<options value="sub" src="conf/type_sub.png">
+				<title xml:lang="ko">서브형</title>
+			</options>
+		</var>
+		<var name="style" type="radio">
+			<title xml:lang="ko">레이아웃 형태</title>
+			<options value="box" src="conf/style_box.png">
+				<title xml:lang="ko">박스형</title>
+			</options>
+			<options value="open" src="conf/style_open.png">
+				<title xml:lang="ko">오픈형</title>
+			</options>
+		</var>
+		<var name="colorset" type="radio">
+			<title xml:lang="ko">컬러셋</title>
+			<options value="colorset1" src="conf/colorset1.png">
+				<title xml:lang="ko">컬러셋1</title>
+			</options>
+			<options value="colorset2" src="conf/colorset2.png">
+				<title xml:lang="ko">컬러셋2</title>
+			</options>
+			<options value="colorset3" src="conf/colorset3.png">
+				<title xml:lang="ko">컬러셋3</title>
+			</options>
+			<options value="colorset4" src="conf/colorset4.png">
+				<title xml:lang="ko">컬러셋4</title>
+			</options>
+			<options value="colorset5" src="conf/colorset5.png">
+				<title xml:lang="ko">컬러셋5</title>
+			</options>
+			<options value="colorset6" src="conf/colorset6.png">
+				<title xml:lang="ko">컬러셋6</title>
+			</options>
+			<options value="colorset7" src="conf/colorset7.png">
+				<title xml:lang="ko">컬러셋7</title>
+			</options>
+			<options value="colorset8" src="conf/colorset8.png">
+				<title xml:lang="ko">컬러셋8</title>
+			</options>
+		</var>
+
+		<var name="custom_cs" type="text">
+			<title xml:lang="ko">사용자 컬러셋</title>
+			<description xml:lang="ko">예) #d35460</description>
+		</var>
+
+		<var name="font" type="select">
+			<title xml:lang="ko">기본폰트</title>
+			<options value="NanumGothic">
+				<title xml:lang="ko">나눔고딕(구글CDN)</title>
+			</options>
+			<options value="NanumGothicS">
+				<title xml:lang="ko">나눔고딕(자체서버)</title>
+			</options>
+			<options value="MalgunGothic">
+				<title xml:lang="ko">맑은고딕</title>
+			</options>
+		</var>
+
+		<var name="custom_font" type="text">
+			<title xml:lang="ko">사용자 폰트</title>
+			<description xml:lang="ko">예) 'Nanum Gothic',돋움 ※ 뛰어쓰기 폰트명은 작은따옴표로 감싸주어야 하고, 여러 폰트는 콤마로 구분</description>
+		</var>
+
+		<var name="cpreview" type="select">
+			<title xml:lang="ko">컬러셋 미리보기</title>
+			<options value="on">
+				<title xml:lang="ko">보이기</title>
+			</options>
+			<options value="off">
+				<title xml:lang="ko">안보이기</title>
+			</options>
+		</var>
+
+		<var name="sign" type="select">
+			<title xml:lang="ko">로그인</title>
+			<options value="on">
+				<title xml:lang="ko">보이기</title>
+			</options>
+			<options value="off">
+				<title xml:lang="ko">안보이기</title>
+			</options>
+		</var>
+
+		<var name="search" type="select">
+			<title xml:lang="ko">검색폼</title>
+			<options value="on">
+				<title xml:lang="ko">보이기</title>
+			</options>
+			<options value="off">
+				<title xml:lang="ko">안보이기</title>
+			</options>
+		</var>
+
+	</group>
+
+	<group>
+		<title xml:lang="ko">서브형 설정(서브형 선택시)</title>
+		<var name="side" type="radio">
+			<title xml:lang="ko">사이드</title>
+			<options value="left" src="conf/sub_side_left.png">
+				<title xml:lang="ko">좌측사이드</title>
+			</options>
+			<options value="right" src="conf/sub_side_right.png">
+				<title xml:lang="ko">우측사이드</title>
+			</options>
+			<options value="off" src="conf/sub_full.png">
+				<title xml:lang="ko">사용안함-풀컨텐츠</title>
+			</options>
+		</var>
+		<var name="side_widget1" type="textarea">
+			<title xml:lang="ko">사이드 상단 내용</title>
+			<description xml:lang="ko">사이드 메뉴 기준 상단에 표시할 위젯코드나 HTML을 입력하세요.</description>
+		</var>
+		<var name="side_widget2" type="textarea">
+			<title xml:lang="ko">사이드 하단 내용</title>
+			<description xml:lang="ko">사이드 메뉴 기준 하단에 표시할 위젯코드나 HTML을 입력하세요.</description>
+		</var>
+		<var name="board_cate" type="select">
+			<title xml:lang="ko">게시판 분류탭</title>
+			<options value="on">
+				<title xml:lang="ko">보이기</title>
+			</options>
+			<options value="off">
+				<title xml:lang="ko">안보이기</title>
+			</options>
+			<description xml:lang="ko">게시판에 분류(카테고리)가 있을 경우 분류탭이 표시됩니다.</description>
+		</var>
+	</group>
+
+	<group>
+		<title xml:lang="ko">사이트정보</title>
+		<var name="logo_bottom" type="image">
+			<title xml:lang="ko">하단로고</title>
+		</var>
+		<var name="address" type="text">
+			<title xml:lang="ko">주소</title>
+		</var>
+		<var name="phone" type="text">
+			<title xml:lang="ko">전화</title>
+		</var>
+		<var name="fax" type="text">
+			<title xml:lang="ko">팩스</title>
+		</var>
+		<var name="email" type="text">
+			<title xml:lang="ko">이메일</title>
+		</var>
+		<var name="copyright" type="text">
+			<title xml:lang="ko">카피라이트</title>
+			<description xml:lang="ko">Copyright© 2013 CAMERON. All rights reserved.</description>
+		</var>
+	</group>
+
+	<group>
+		<title xml:lang="ko">CSS 수정</title>
+		<var name="custom_css" type="textarea">
+			<title xml:lang="ko">CSS 수정</title>
+			<description xml:lang="ko">예).seachbox{display:none} ※ 패치시 유지됩니다.</description>
+		</var>
+	</group>
+
+</extra_vars>
+
+<menus>
+	<menu name="global_nav" maxdepth="2" default="true">
+		<title xml:lang="ko">메인메뉴</title>
+	</menu>
+	<menu name="bottom_nav" maxdepth="1">
+		<title xml:lang="ko">하단메뉴</title>
+	</menu>
+	<menu name="option_nav" maxdepth="1">
+		<title xml:lang="ko">하단 옵션메뉴</title>
+	</menu>
+</menus>
+</layout>

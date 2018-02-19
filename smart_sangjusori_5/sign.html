@@ -1,0 +1,14 @@
+<div id="signin" class="newclearfix">
+	<ul cond="!$is_logged">
+		<li><a href="{getUrl('act','dispMemberLoginForm')}" tabindex="3">{$lang->cmd_login}</a></li>
+		<li><a href="{getUrl('act','dispMemberSignUpForm')}" tabindex="4">{$lang->cmd_signup}</a>
+		<li><a href="http://www.sangjusori.co.kr/index.php?mid=board_total_news">전체기사</a></li>
+		</li>
+	</ul>
+	<ul cond="$is_logged">
+		<li><a href="{getUrl('act','dispMemberLogout')}" tabindex="3">{$lang->cmd_logout}</a></li>
+		<li><a href="{getUrl('act','dispMemberInfo')}" tabindex="4">{$logged_info->nick_name}</a></li>
+		<li cond="$logged_info->is_admin == 'Y'"><a href="{getUrl('','module','admin')}" target="_blank" title="{$lang->cmd_management}">{$lang->cmd_management}</a></li>
+		<li><a href="http://www.sangjusori.co.kr/index.php?mid=board_total_news">전체기사</a></li>
+	</ul>
+</div>

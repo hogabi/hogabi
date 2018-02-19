@@ -1,0 +1,75 @@
+<include target="_settings.html" />
+
+<body id="style-{$layout_info->style}" class="<!--@if($layout_info->custom_cs)-->cs<!--@else-->{$layout_info->colorset}<!--@endif-->">
+
+<p class="skipNav"><a href="#content" id="skip" tabindex="1">본문으로 바로가기</a></p>
+
+<div id="cameron-body">
+	<header id="header" class="cameron-container newclearfix">
+		<a href="{$logo_link}" id="logo" tabindex="2" style="top:{$layout_info->logo_y}px"|cond="$layout_info->logo_y">
+			<!--@if($layout_info->logo)--><img src="{$layout_info->logo}" alt="{Context::getSiteTitle()}"|cond="$current_version > '1.7.0.0'" title="{Context::getSiteTitle()}"|cond="$current_version > '1.7.0.0'" />
+			<!--@else--><span class="smart-logo" title="{Context::getSiteTitle()}"|cond="$current_version > '1.7.0.0'"></span><!--@endif-->
+		</a>
+		<include target="navigation.html" />
+	</header>
+	
+	<section id="contents" class="cameron-container newclearfix">
+		<header class="{$layout_info->type}-page-header <!--@if($layout_info->sign=='off' && $layout_info->search=='off')-->n-page-header <!--@endif-->newclearfix">
+			<include cond="$layout_info->sign!='off'" target="sign.html" />
+			<include cond="$layout_info->type=='main' && $layout_info->search!='off'" target="search.html" />
+			<h1 cond="$layout_info->type=='sub'" class="page-title"><!--@if($mi->title)-->{$mi->title}<!--@elseif($nav3rd)-->{$nav3rd}<!--@elseif($nav2nd)-->{$nav2nd}<!--@else-->{$nav1st}<!--@endif--></h1>
+		</header>
+
+		<section id="{$layout_info->type}"|cond="$layout_info->side!='off'" class="<!--@if($layout_info->type=='sub' && ($layout_info->side=='left' || $layout_info->side=='right'))-->withs <!--@if($layout_info->side=='left')-->fright <!--@endif--><!--@endif-->newclearfix">
+			<div id="content" class="content newclearfix<!--@if($module_info->module=='page')--> widget-page<!--@endif-->">
+				<block cond="$layout_info->board_cate!='off'">
+					<img cond="$module_info->module=='board' && $mi->use_category=='Y'" class="zbxe_widget_output" widget="cameronCategory" skin="smart" colorset="layout" srl="{$module_info->module_srl}" />
+				</block>
+				{$content}
+			</div>
+		</section>
+
+		<include cond="$layout_info->type=='sub' && ($layout_info->side=='left' || $layout_info->side=='right')" target="aside.html" />
+		<include cond="$layout_info->type=='main' && ($layout_info->side=='left' || $layout_info->side=='right')" target="bside.html" />	
+	</section>
+	
+	<footer id="footer" class="cameron-container newclearfix">
+		<span class="footer_arrow"></span>
+		<div class="line-bottom newclearfix">
+			<div class="footer-l newclearfix">
+				<a id="logo-bottom" href="{$logo_link}">
+					<!--@if($layout_info->logo_bottom)--><img src="{$layout_info->logo_bottom}" />
+					<!--@else--><span class="smart-logo-bottom"></span><!--@endif-->
+				</a>
+			</div>
+			<div class="footer-r newclearfix">
+				<nav id="bottom-nav" class="newclearfix">
+					<ul>
+						<li loop="$bottom_nav->list=>$key,$val">
+							<a href="{$val['href']}" target="_blank"|cond="$val['open_window']=='Y'">{$val['link']}</a>
+						</li>
+					</ul>
+				</nav>
+				<ul id="contact-info">
+					<li cond="$layout_info->address" class="address">{$layout_info->address}</li>
+					<li cond="$layout_info->phone" class="phone">{$layout_info->phone}</li>
+					<li cond="$layout_info->fax" class="fax">{$layout_info->fax}</li>
+					<li cond="$layout_info->email" class="email"><a href="mailto:{$layout_info->email}">{$layout_info->email}</a></li>
+				</ul>
+			</div>
+		</div>
+	</footer>
+	
+	<footer id="copyinfo" class="cameron-container newclearfix">
+		<ul>
+			<li>{$layout_info->copyright}</li>
+			<li loop="$option_nav->list=>$key,$val">
+				<a href="{$val['href']}" target="_blank"|cond="$val['open_window']=='Y'">{$val['link']}</a>
+			</li>
+		</ul>
+	</footer>
+</div>
+
+<a href="#" id="sTop" title="Back to Top" style="display: none;">XE{$current_version} Layout{$layout_info->version}</a>
+
+<include cond="$layout_info->cpreview=='on' && $IE!='7'" target="cpreview.html" />

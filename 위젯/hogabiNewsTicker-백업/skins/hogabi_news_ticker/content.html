@@ -1,0 +1,64 @@
+<load target="css/smart_news_ticker.css" />
+<load cond="!$global['bxslider']" target="js/jquery.bxslider.min.js" type="body" />
+{@ $__Context->global['bxslider'] = 1}
+
+<!--@if(!$global['csi'])-->{@ $__Context->global['csi'] = 1}<!--@endif-->{@ $__Context->global['csi']++}
+
+<style cond="$widget_info->cs_color" type="text/css">
+.smart_news_ticker #ticker{$global['csi']} a:hover,
+.smart_news_ticker #ticker{$global['csi']} a:focus{color:{$widget_info->cs_color}}
+.smart_news_ticker #ticker{$global['csi']} .category{background-color:{$widget_info->cs_color}}
+.smart_news_ticker #ticker{$global['csi']} .date{color:{$widget_info->cs_color}}
+.smart_news_ticker .bx-wrapper .bx-has-controls-direction .bx-controls-direction a:hover,
+.smart_news_ticker .bx-wrapper .bx-has-controls-direction .bx-controls-direction a:focus{background-color:{$widget_info->cs_color}; border-color:{$widget_info->cs_color}}
+.smart_news_ticker .bx-wrapper .bx-has-controls-direction .bx-controls-direction .bx-prev:after{border-bottom-color:{$widget_info->cs_color}}
+.smart_news_ticker .bx-wrapper .bx-has-controls-direction .bx-controls-direction .bx-next:after{border-top-color:{$widget_info->cs_color}}
+</style>
+
+<div class="smart_news_ticker">
+	<ul id="ticker{$global['csi']}" class="newclearfix">
+		<li loop="$widget_info->content_items=>$key,$item" style="display:none"|cond="$key>0">
+			<a href="{$item->getLink()}">
+				<span class="news_arrow"></span>
+				<block loop="$widget_info->option_view_arr=>$k,$v">
+					<!--@if($v=='title')-->
+						<span cond="$widget_info->show_category=='Y'" class="category"><!--@if($item->get('category_srl'))-->{$item->getCategory()}<!--@else-->{$item->getBrowserTitle()}<!--@endif--><span style="color:#dedede"> |</span></span>
+						<span class="title">{strip_tags($item->getTitle($widget_info->subject_cut_size))}</span>
+					<!--@elseif($v=='nickname')-->
+						<span class="author">{$item->getNickName()}</span>
+					<!--@elseif($v=='regdate')-->
+						<span class="date">[속보]{$item->getRegdate("Y-m-d")}</span>
+					<!--@else if($v=='extravar')-->
+						<span>{$item->getExtraVar()}</span>
+					<!--@endif-->
+				</block>
+			</a>
+		</li>
+	</ul>
+</div>
+
+<script type="text/javascript">
+jQuery(function($){
+	var $ticker = $('#ticker{$global["csi"]}'),
+		$ticker_list = $ticker.find('li');
+
+	$ticker.bxSlider({
+		mode: 'vertical',
+		speed: 300,
+		easing: 'swing',
+		auto: true,
+		pause : {$widget_info->pause}000,
+		infiniteLoop: true,
+		autoHover: true,
+		pager: false,
+		controls: false,
+		nextText: '',
+		prevText: '',
+		captions: false,
+		useCSS: false,
+		touchEnabled: false
+	});
+	
+	$ticker_list.css('display','block');
+})
+</script>

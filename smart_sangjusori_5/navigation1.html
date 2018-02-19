@@ -1,0 +1,31 @@
+  <div class="nav_wrapper">
+  <nav class="menu">
+    {@
+        $inx = 1; $j = 1;
+    }
+
+	<ul>
+		<li loop="$global_nav->list=>$key1,$val1">
+
+
+            <a href="{$val1['href']}"
+               target="_blank"|cond="$val1['open_window']=='Y'"
+               id="{@ echo ('sjnavili'.$inx) }"
+               class="{@ echo ('sjnavilifirst'.$inx) } sjTopMenuA"
+               {@ echo ("onmouseover=activeGNB('sjnavi$inx','sjnavili$inx'); onfocus=activeGNB('sjnavi$inx','sjnavili$inx');")}
+             >{$val1['link']}</a>
+
+
+		   <ul cond="$val1['list']" id="{@ echo ('sjnavi'.$inx)}" class="sjTopMenu">
+				<li loop="$val1['list']=>$key2,$val2" >
+				   <a href="{$val2['href']}" target="_blank"|cond="$val2['open_window']=='Y'">{$val2['link']}</a>
+				</li>
+			</ul>
+        {@
+          $j++;  $inx++;
+        }
+
+		</li>
+	</ul>
+</nav>
+</div>

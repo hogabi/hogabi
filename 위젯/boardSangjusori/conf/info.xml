@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget version="0.2">
+	<title xml:lang="ko">상주소리 게신판 탭으로 분류 하여 출력</title>
+	<description xml:lang="ko">게시판 3개의 컨텐츠를 출력하는 위젯입니다</description>
+	<version>0.1</version>
+	<date>2018-01-19</date>
+
+	<author email_address="hogabi33@gmail.com" link="http://www.sangjusori.com">
+		<name xml:lang="ko">sangjusori</name>
+	</author>
+
+	<extra_vars>
+        <var id="list_count">
+            <type>text</type>
+            <name xml:lang="ko">목록수</name>
+            <description xml:lang="ko">출력될 목록의 수를 정하실 수 있습니다. (기본 5개)</description>
+        </var>
+		<var id="subject_cut_size">
+			<type>text</type>
+			<name xml:lang="ko">제목 글자수:상주소리</name>
+			<description xml:lang="ko">제목 글자수를 지정할 수 있습니다. (0또는 비워주시면 자르지 않습니다)</description>
+		</var>
+		<var id="module_srls">
+			<type>module_srl_list</type>
+			<name xml:lang="ko">대상 모듈</name>
+			<description xml:lang="ko">선택하신 모듈에 등록된 글을 대상으로 합니다.</description>
+		</var>
+	
+        <group>
+            <title xml:lang="ko">추출 대상 모듈 번호 : 3개까지 입력</title>	
+			<var id="module_srls_1">
+                <type>module_srl_list</type>
+                <name xml:lang="ko">(1)대상 모듈</name>
+                <description xml:lang="ko">선택하신 모듈에 등록된 글을 대상으로 합니다.</description>
+    		</var>
+            <var id="tab_title_1">
+                <type>text</type>
+                <name xml:lang="ko">(1)탭 제목 입력</name>
+                <description xml:lang="ko">)탭에 출력할 제목 입력  ex 자유게시판..</description>
+            </var>       
+            <var id="module_srls_2">
+                <type>module_srl_list</type>
+                <name xml:lang="ko">(2)대상 모듈</name>
+                <description xml:lang="ko">선택하신 모듈에 등록된 글을 대상으로 합니다.</description>
+    		</var>
+            <var id="tab_title_2">
+                <type>text</type>
+                <name xml:lang="ko">(2)탭 제목 입력</name>
+                <description xml:lang="ko">)탭에 출력할 제목 입력  ex 자유게시판..</description>
+            </var>       
+			<var id="module_srls_3">
+                <type>module_srl_list</type>
+                <name xml:lang="ko">(3)대상 모듈</name>
+                <description xml:lang="ko">선택하신 모듈에 등록된 글을 대상으로 합니다.</description>
+    		</var>
+            <var id="tab_title_3">
+                <type>text</type>
+                <name xml:lang="ko">(3)탭 제목 입력</name>
+                <description xml:lang="ko">)탭에 출력할 제목 입력  ex 자유게시판..</description>
+            </var>                   
+        </group>
+	</extra_vars>
+	
+	
+	
+</widget>

@@ -1,0 +1,37 @@
+@charset "utf-8";
+/* Clearfix */
+.newclearfix:after{clear:both; content:' '; display:block; font-size:0; height:0; line-height:0; visibility:hidden; width:0}
+* html .newclearfix,:first-child+html .newclearfix{zoom:1}
+
+/* a */
+.smart-list a,
+.smart-list a > *{text-decoration:none; -webkit-transition:background-color .2s ease, border .2s ease, color .2s ease, opacity .2s ease-in-out; -moz-transition:background-color .2s ease, border .2s ease, color .2s ease, opacity .2s ease-in-out; -ms-transition:background-color .2s ease, border .2s ease, color .2s ease, opacity .2s ease-in-out; -o-transition:background-color .2s ease, border .2s ease, color .2s ease, opacity .2s ease-in-out; transition:background-color .2s ease, border .2s ease, color .2s ease, opacity .2s ease-in-out}
+.smart-list a:hover{text-decoration:none}
+.smart-list img,
+.smart-list iframe{vertical-align:middle}
+
+/* Widget */
+.smart-list-container{margin:0; padding:10px 12px; background-color:#ffffff; border:0px solid #efefef; border-bottom-color:#d9d9d9; border-left-width: 1px;}
+.smart-list{margin:0; padding:0; list-style:none}
+.smart-list li{margin:0; padding:4px 0 4px 10px; background:url(list_dot.png) no-repeat left center; line-height:1.2}
+.smart-list li a{font-family:나눔고딕,sans-serif; font-size:1rem; color:#808080; cursor:pointer}
+.smart-list li p{margin:0; padding:0}
+.smart-list li .titleArea{float:left}
+.smart-list li .icon{display:inline-block; margin-left:3px; vertical-align:top}
+.smart-list li .adArea{float:right}
+.smart-list li .adArea span{margin-left:5px}
+.smart-list li .category,
+.smart-list li .replynum{color:#fd7700}
+.smart-list li .author,
+.smart-list li .date,
+.smart-list li .ext{color:#808080}
+.smart-list li .title{font-size:1rem; color:#585858}
+.smart-list li:hover .title,
+.smart-list li:focus .title{font-weight:bold; letter-spacing:-1px; color:#585858}
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	.smart-list li:hover .title,
+	.smart-list li:focus .title{font-weight:normal; letter-spacing:0}
+}
+
+.x #zonePageContent .smart-list{margin:0; padding:0}
+.x #zonePageContent .smart-list li{margin:0; padding:4px 0 4px 10px; line-height:1.2}

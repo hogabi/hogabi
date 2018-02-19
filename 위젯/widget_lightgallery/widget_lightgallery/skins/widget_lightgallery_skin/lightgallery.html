@@ -1,0 +1,77 @@
+{@ $skin_path = $tpl_path}
+<!--// 모바일 체크 -->
+{@ $mobile_check = 'N'}
+<!--@if(!Mobile::isMobilePadCheckByAgent() && (Mobile::isMobileCheckByAgent() || $m==1))-->
+{@ $mobile_check = 'Y'}
+<!--@end-->
+
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<!--// 공통 CSS,JS -->
+<load target="./css/widget.css" />
+
+<!--//반응형 CSS,JS -->
+<!--@if($mobile_check=='Y')-->
+  <!--@if($gallery_obj->use_response=='Y')-->
+    <link rel="stylesheet" href="{$skin_path}css/widget_mobile.css" media="all and (max-width: {$gallery_obj->response_width}px)" />
+  <!--@else-->
+    <load target="./css/widget_mobile.css" />
+  <!--@end-->
+<!--@else-->
+  <!--@if($gallery_obj->use_response=='Y')-->
+    <link rel="stylesheet" href="{$skin_path}css/widget_mobile.css" media="all and (max-width: {$gallery_obj->response_width}px)" />
+  <!--@end-->
+<!--@end-->
+
+
+
+<div class="widget_lightgallery_skin">
+  <div id="aniimated-thumbnials">
+    <!--@foreach($gallery_list as $key => $val)-->
+      {@ $itemDocument = $oDocumentModel->getDocument($val->document_srl)}
+      {@ $uploaded_images = array()}
+      <!--@if($itemDocument->hasUploadedFiles())-->
+        <!--@foreach($itemDocument->getUploadedFiles() as $key => $val)-->
+          {@ $filename = strtolower($val->uploaded_filename)}
+          <!--@if((substr($filename,-3)=='gif' || substr($filename,-3)=='jpg' || substr($filename,-3)=='png'))-->
+            {@ $uploaded_images[] = $val->uploaded_filename}
+          <!--@end-->
+        <!--@end-->
+      <!--@end-->
+      <!--@if(count($uploaded_images))-->
+        {@ $thumbnail_image = $itemDocument->getThumbnail($gallery_obj->thumbnail_width,$gallery_obj->thumbnail_height,$gallery_obj->thumbnail_type)}
+
+        <!--@if($gallery_obj->link_target=='_none')-->
+          {@ $data_sub_html = $itemDocument->getTitleText()}
+        <!--@else if($gallery_obj->link_target=='_blank')-->
+          {@ $data_sub_html = "<a class='caption_link' href='".getUrl('','document_srl',$itemDocument->document_srl)."' target='_blank' style='color:#fff;'>".$itemDocument->getTitleText()."</a>"}
+        <!--@else-->
+          {@ $data_sub_html = "<a class='caption_link' href='".getUrl('','document_srl',$itemDocument->document_srl)."' style='color:#fff;'>".$itemDocument->getTitleText()."</a>"}
+        <!--@end-->
+
+        <!--@if($gallery_obj->image_output_type=='all')-->
+          <!--@foreach($uploaded_images as $f_key => $f_val)-->
+            <a class="gallery_item" href="{$f_val}" data-sub-html="{$data_sub_html}"|cond="$gallery_obj->output_caption!='N'">
+              <img class="thumbnail" src="{$f_val}" style="width:{$gallery_obj->thumbnail_width}px; height:{$gallery_obj->thumbnail_height}px;" />
+              <div class="hover_bg">&nbsp;</div>
+              <img class="hover_zoom" src="./images/zoom.png" />
+            </a>
+          <!--@end-->
+        <!--@else-->
+          <a class="gallery_item" href="{$uploaded_images[0]}" data-sub-html="{$data_sub_html}"|cond="$gallery_obj->output_caption!='N'">
+            <img class="thumbnail" src="{$thumbnail_image}" />
+            <div class="hover_bg">&nbsp;</div>
+            <img class="hover_zoom" src="./images/zoom.png" />
+          </a>
+        <!--@end-->
+      <!--@end-->
+    <!--@end-->
+  </div>
+</div>
+
+
+
+<include target="lightgallery_script.html" />

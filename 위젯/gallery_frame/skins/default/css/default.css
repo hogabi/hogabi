@@ -1,0 +1,23 @@
+.carousel  {padding: 0;margin: 0;position: relative;color: #3a3a3a;}
+.carousel .noimage {background: url('../img/noimage.png') no-repeat center; }
+/* buttons */
+.carousel .btn {padding:0px;height:0px; width:0px;}
+.carousel .prev, .carousel .next {float: left;	position:relative;}
+.carousel .next:hover, .carousel .next:active,
+.carousel .prev:hover, .carousel .prev:active{border: none;outline: none;}    
+			
+	/* frame background */
+    .carousel .jCarouselLiteCommon {float: left;margin-right:5px; margin-left:5px;
+	
+	/* Needed for rendering without flicker */position: relative;visibility: hidden;left: -5000px;}
+        .carousel ul {margin: 0;}
+		
+	/* image size */
+        .carousel li img{background-color: #fff;}
+
+        .carousel .title{overflow: visible;cursor: hand;text-align: center;}      
+
+		.carousel a,
+		.carousel a:hover, 
+		.carousel a:active,
+		.carousel a:visited{text-decoration: none;}  

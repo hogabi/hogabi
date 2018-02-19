@@ -1,0 +1,5 @@
+div.simpleWidgetStyle { position:relative;margin-bottom:20px; overflow:hidden; *zoom:1;}
+div.simpleWidgetStyle h2 { margin:10px 10px 10px 10px; padding:10px 10px 5px 0; font:bold 16px "Malgun Gothic", AppleGothic, Dotum, Sans-serif; border-bottom:0px solid #434343;}
+div.simpleWidgetStyle a.widgetMoreLink {text-decoration:none;}
+div.simpleWidgetStyle.black h2 { color:#333; }
+div.simpleWidgetStyle.black h2 { color:#999; }

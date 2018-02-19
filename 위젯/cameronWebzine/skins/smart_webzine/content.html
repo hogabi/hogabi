@@ -1,0 +1,26 @@
+<load target="smart_webzine.css" />
+<div class="smart-webzine-container newclearfix">
+	<ul class="smart-webzine">
+		<li loop="$widget_info->content_items=>$key,$item" class="newclearfix">
+
+
+			<block loop="$widget_info->option_view_arr=>$k,$v">
+				<!--@if($v=='title')-->
+					<p class="titleArea"><a href="{$item->getLink()}" target="_blank"|cond="$widget_info->new_window" ><strong cond="$widget_info->show_category=='Y' && $item->get('category_srl')" class="category">[{$item->getCategory()}] </strong><span class="title">{strip_tags($item->getTitle($widget_info->subject_cut_size))}</span><span cond="$widget_info->show_icon=='Y'" class="icon">{$item->printExtraImages()}</span></a></p>
+
+			<div class="webzine-thumb" style="width:{$widget_info->thumbnail_width}px; height:{$widget_info->thumbnail_height}px">
+				<img cond="$item->getThumbnail()" src="{$item->getThumbnail()}" alt="" style="width:{$widget_info->thumbnail_width}px; height:{$widget_info->thumbnail_height}px" />
+				<span cond="!$item->getThumbnail()" class="noimage" style="width:{$widget_info->thumbnail_width-2}px; height:{$widget_info->thumbnail_height-2}px">No Image</span>
+			</div>
+				
+				<!--@else if($v=='content')-->
+					<p class="summary"><a href="{$item->getLink()}" target="_blank"|cond="$widget_info->new_window" >{$item->getContent()}</a></p>
+				<!--@else if($v=='nickname')-->
+					<p class="author">{$item->getNickName($widget_info->nickname_cut_size)}</p>
+				<!--@else if($v=='regdate')-->
+					<p class="date">{$item->getRegdate("Y-m-d")} {$item->getRegdate("H:i")}</p>
+				<!--@endif-->
+			</block>
+		</li>
+	</ul>
+</div>

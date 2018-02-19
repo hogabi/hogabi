@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget version="0.2">
+    <title xml:lang="ko">카메론 뉴스티커 위젯</title>
+    <description xml:lang="ko">뉴스티커에 맞게 설정한 위젯입니다.</description>
+    <version>1.0.1</version>
+    <date>2015-01-05</date>
+
+    <author email_address="mail@cameron.co.kr" link="http://cameron.co.kr/">
+        <name xml:lang="ko">CAMERON</name>
+    </author>
+
+    <extra_vars>
+		<group>
+            <title xml:lang="ko">사용자컬러</title>
+			<var id="cs_color">
+				<type>text</type>
+				<name xml:lang="ko">사용자컬러</name>
+				<description xml:lang="ko">예) #fafafa</description>
+			</var>
+		</group>
+
+        <group>
+            <title xml:lang="ko">추출 대상</title>
+			<var id="module_srls">
+				<type>module_srl_list</type>
+				<name xml:lang="ko">게시판</name>
+			</var>
+		</group>
+
+        <group>
+            <title xml:lang="ko">정렬 방법</title>
+			<var id="order_target">
+				<type>select</type>
+				<name xml:lang="ko">정렬 대상</name>
+				<options>
+					<value>list_order</value>
+					<name xml:lang="ko">최신 등록순</name>
+				</options>
+				<options>
+					<value>update_order</value>
+					<name xml:lang="ko">최근 변경순</name>
+				</options>
+				<options>
+					<value>regdate</value>
+					<name xml:lang="ko">등록 일자순</name>
+				</options>
+				<options>
+					<value>rand()</value>
+					<name xml:lang="ko">랜덤순</name>
+				</options>
+			</var>
+			<var id="order_type">
+				<type>select</type>
+				<name xml:lang="ko">정렬 방법</name>
+				<description xml:lang="ko">정렬대상을 내림차순 또는 올림차순으로 정렬할 수 있습니다.</description>
+				<options>
+					<value>desc</value>
+					<name xml:lang="ko">내림차순</name>
+				</options>
+				<options>
+					<value>asc</value>
+					<name xml:lang="ko">올림차순</name>
+				</options>
+			</var>
+			<var id="list_count">
+				<type>text</type>
+				<name xml:lang="ko">글 수</name>
+				<description xml:lang="ko">출력될 글 수를 정할 수 있습니다. (기본 4개)</description>
+			</var>
+			<var id="pause">
+				<type>text</type>
+				<name xml:lang="ko">글 자동 전환시간</name>
+				<description xml:lang="ko">예) 3 (단위:초) ※ 숫자만 입력하세요.</description>
+			</var>
+		</group>
+
+		<group>
+			<title xml:lang="ko">표시형태</title>
+			<var id="option_view">
+				<type>select-multi-order</type>
+				<name xml:lang="ko">표시항목 및 순서</name>
+				<options default="false" init="true">
+					<value>title</value>
+					<name xml:lang="ko">제목</name>
+				</options>
+				<options init="true">
+					<value>regdate</value>
+					<name xml:lang="ko">등록일</name>
+				</options>
+				<options>
+					<value>nickname</value>
+					<name xml:lang="ko">글쓴이</name>
+				</options>
+				<options>
+					<value>extravar</value>
+					<name xml:lang="ko">사용자정의</name>
+				</options>
+			</var>
+		</group>
+
+		<group>
+			<title xml:lang="ko">내용 표시</title>
+			<var id="subject_cut_size">
+				<type>text</type>
+				<name xml:lang="ko">제목 글자수</name>
+			</var>
+			<var id="extravar_name">
+				<type>text</type>
+				<name xml:lang="ko">사용자정의 이름</name>
+				<description xml:lang="ko">게시판의 사용자정의 이름(ID)를 입력하세요. (표시항목에서 사용자정의 선택했을 경우 적용)</description>
+			</var>
+
+			<var id="show_category">
+				<type>select</type>
+				<name xml:lang="ko">게시판 분류 이름(카테고리)</name>
+				<options>
+					<value>Y</value>
+					<name xml:lang="ko">출력</name>
+				</options>
+				<options>
+					<value>N</value>
+					<name xml:lang="ko">출력하지 않음</name>
+				</options>
+			</var>
+		</group>
+
+		<group>
+			<title xml:lang="ko">특정 분류(카테고리)에서 추출</title>
+			<var id="category_srl">
+				<type>text</type>
+				<name xml:lang="ko">대상 분류 srl값</name>
+				<description xml:lang="ko">표시하고 싶은 분류만 나타나도록 할 경우 해당 분류 srl값을 입력해 주세요. (콤마(,)로 구분, 비워두시면 모든 분류 대상, 예:1234,1558)</description>
+			</var>
+			<var id="category_range">
+				<type>select</type>
+				<name xml:lang="ko">대상 분류 범위</name>
+				<description xml:lang="ko">전체 분류를 표시할 것인지, 최상위 단계의 분류만 표시할 것인지 설정할 수 있습니다.</description>
+				<options>
+					<value>all</value>
+					<name xml:lang="ko">모든 분류 단계</name>
+				</options>
+				<options>
+					<value>first</value>
+					<name xml:lang="ko">최상위 단계(1단계)</name>
+				</options>
+			</var>
+		</group>
+
+		<group>
+			<title xml:lang="ko">내용 표시권한</title>
+			<var id="view_permission">
+				<type>select-multi-order</type>
+				<name xml:lang="ko">표시 권한</name>
+				<options default="false" init="true">
+					<value>list</value>
+					<name xml:lang="ko">목록</name>
+				</options>
+				<options>
+					<value>view</value>
+					<name xml:lang="ko">열람</name>
+				</options>
+				<options>
+					<value>write_document</value>
+					<name xml:lang="ko">글 작성</name>
+				</options>
+				<options>
+					<value>write_comment</value>
+					<name xml:lang="ko">댓글 작성</name>
+				</options>
+				<description xml:lang="ko">선택하신 권한에 대해 권한있는 방문자만 위젯이 보이게 됩니다. (비워둘 경우 항상 보임)</description>
+			</var>
+			<var id="view_secret_document">
+				<type>select</type>
+				<name xml:lang="ko">비밀글 표시 방법</name>
+				<options>
+					<value>all_user</value>
+					<name xml:lang="ko">모든 사용자에게 출력</name>
+				</options>
+				<options>
+					<value>use_permission</value>
+					<name xml:lang="ko">해당글 권한이 있을때만 출력</name>
+				</options>
+				<options>
+					<value>not_show</value>
+					<name xml:lang="ko">항상 출력하지 않음</name>
+				</options>
+				<description xml:lang="ko">비밀글에 대해서 표시할 방법을 선택할 수 있습니다.</description>
+			</var>
+		</group>
+
+    </extra_vars>
+</widget>

@@ -1,0 +1,852 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget version="0.2">
+    <title xml:lang="ko">XENARA LIGHT GALLERY 위젯</title>
+    <description xml:lang="ko">게시글,첨부이미지 등을 추출하여, LIGHT GALLERY로 보여주는 위젯입니다.</description>
+    <version>1.8.19</version>
+    <date>2016-06</date>
+
+    <author email_address="kolaskks@naver.com" link="http://xenara.zaggu.net/">
+        <name xml:lang="ko">XENARA</name>
+    </author>
+
+    <extra_vars>
+        <group>
+            <title xml:lang="ko">반응형 설정</title>
+            <var id="use_response" type="select">
+                <name xml:lang="ko">반응형 사용유무</name>
+                <description xml:lang="ko">반응형 사용유무를 선택하세요. '사용'할 경우 지정된 가로크기를 기준으로 PC용, 모방일용으로 출력합니다.</description>
+                <options>
+                    <value>Y</value>
+                    <name xml:lang="ko">사용</name>
+                </options>
+                <options>
+                    <value>N</value>
+                    <name xml:lang="ko">사용안함</name>
+                </options>
+            </var>
+            <var id="response_width" type="text">
+                <name xml:lang="ko">반응형 가로크기</name>
+                <description xml:lang="ko">반응형을 적용할 가로크기를 입력하세요. 입력한 크기보다 작으면 모바일용을 출력합니다. (기본 : 479)</description>
+            </var>
+        </group>
+
+
+        <group>
+            <title xml:lang="ko">목록 설정</title>
+            <var id="module_srl">
+                <type>module_srl_list</type>
+                <name xml:lang="ko">대상모듈</name>
+                <description xml:lang="ko">선택한 모듈(board)에 등록된 글을 대상으로 합니다.</description>
+            </var>
+            <var id="category_srl" type="text">
+                <name xml:lang="ko">분류번호</name>
+                <description xml:lang="ko">분류번호를 입력하세요. 입력한 번호의 분류에 등록된 글을 출력합니다. 여러개일 경우 콤마(,)로 구분하여 입력하세요.</description>
+            </var>
+            <var id="member_srl" type="text">
+                <name xml:lang="ko">회원번호</name>
+                <description xml:lang="ko">회원번호를 입력하세요. 입력한 번호의 회원이 등록한 글을 출력합니다. 여러개일 경우 콤마(,)로 구분하여 입력하세요.</description>
+            </var>
+
+            <var id="document_type" type="select">
+                <name xml:lang="ko">문서타입</name>
+                <description xml:lang="ko">출력할 문서타입을 선택하세요.</description>
+                <options>
+                    <value>normal</value>
+                    <name xml:lang="ko">일반글</name>
+                </options>
+                <options>
+                    <value>notice</value>
+                    <name xml:lang="ko">공지글</name>
+                </options>
+                <options>
+                    <value>all</value>
+                    <name xml:lang="ko">모두</name>
+                </options>
+            </var>
+
+            <var id="list_count" type="text">
+                <name xml:lang="ko">목록수</name>
+                <description xml:lang="ko">출력될 목록의 수를 입력하세요.(기본: 20)</description>
+            </var>
+            <var id="sort_index" type="select">
+                <name xml:lang="ko">정렬대상</name>
+                <description xml:lang="ko">등록된 순서 또는 변경된 순서로 정렬을 할 수 있습니다.</description>
+                <options>
+                    <value>regdate</value>
+                    <name xml:lang="ko">등록순</name>
+                </options>
+                <options>
+                    <value>update_order</value>
+                    <name xml:lang="ko">변경순</name>
+                </options>
+                <options>
+                    <value>readed_count</value>
+                    <name xml:lang="ko">조회순</name>
+                </options>
+            </var>
+            <var id="order_type" type="select">
+                <name xml:lang="ko">정렬방법</name>
+                <description xml:lang="ko">정렬대상을 내림차순 또는 올림차순으로 정렬할 수 있습니다.</description>
+                <options>
+                    <value>desc</value>
+                    <name xml:lang="ko">내림차순</name>
+                </options>
+                <options>
+                    <value>asc</value>
+                    <name xml:lang="ko">올림차순</name>
+                </options>
+            </var>
+            <var id="shuffle_type" type="select">
+                <name xml:lang="ko">무작위 정렬유무</name>
+                <description xml:lang="ko">무작위 정렬유무를 선택하세요. 목록이 무작위로 정렬됩니다.</description>
+                <options>
+                    <value>N</value>
+                    <name xml:lang="ko">무작위 정렬 안함</name>
+                </options>
+                <options>
+                    <value>Y</value>
+                    <name xml:lang="ko">무작위 정렬</name>
+                </options>
+            </var>
+            <var id="output_caption" type="select">
+                <name xml:lang="ko">캡션 출력유무</name>
+                <description xml:lang="ko">캡션 출력유무를 선택하세요. '출력'을 선택하면 게시글 제목을 캡션으로 출력합니다.</description>
+                <options>
+                    <value>Y</value>
+                    <name xml:lang="ko">출력</name>
+                </options>
+                <options>
+                    <value>N</value>
+                    <name xml:lang="ko">출력안함</name>
+                </options>
+            </var>
+            <var id="link_target" type="select">
+                <name xml:lang="ko">링크 타겟</name>
+                <description xml:lang="ko">링크 타겟을 선택하세요.</description>
+                <options>
+                    <value>_self</value>
+                    <name xml:lang="ko">현재창</name>
+                </options>
+                <options>
+                    <value>_blank</value>
+                    <name xml:lang="ko">새창</name>
+                </options>
+                <options>
+                    <value>_none</value>
+                    <name xml:lang="ko">사용안함</name>
+                </options>
+            </var>
+            <var id="image_output_type" type="select">
+                <name xml:lang="ko">첨부이미지 출력방법</name>
+                <description xml:lang="ko">첨부이미지 출력방법을 선택하세요. '모두출력'일 경우, 게시글에 등록된 모든 이미지를 출력합니다.</description>
+                <options>
+                    <value>first</value>
+                    <name xml:lang="ko">첫번째 첨부이미지</name>
+                </options>
+                <options>
+                    <value>all</value>
+                    <name xml:lang="ko">모두출력</name>
+                </options>
+            </var>
+        </group>
+
+
+        <group>
+            <title xml:lang="ko">썸네일 설정</title>
+            <var id="thumbnail_width" type="text">
+                <name xml:lang="ko">썸네일 가로크기</name>
+                <description xml:lang="ko">썸네일 가로크기를 입력하세요. 숫자만 입력하세요. (기본: 225)</description>
+            </var>
+            <var id="thumbnail_height" type="text">
+                <name xml:lang="ko">썸네일 세로크기</name>
+                <description xml:lang="ko">썸네일 세로크기를 입력하세요. 숫자만 입력하세요. (기본: 150)</description>
+            </var>
+            <var id="thumbnail_type" type="select">
+                <name xml:lang="ko">썸네일 타입</name>
+                <description xml:lang="ko">썸네일 타입을 선택하세요.</description>
+                <options>
+                    <value>crop</value>
+                    <name xml:lang="ko">CROP</name>
+                </options>
+                <options>
+                    <value>ratio</value>
+                    <name xml:lang="ko">RATIO</name>
+                </options>
+            </var>
+        </group>
+
+
+        <group>
+            <title xml:lang="ko">Light Gallery 옵션 설정</title>
+            <var id="mode" type="select">
+                <name xml:lang="ko">mode</name>
+                <description xml:lang="ko">'mode' 설정값을 선택하세요.</description>
+                <options>
+                    <value>lg-slide</value>
+                    <name xml:lang="ko">lg-slide</name>
+                </options>
+                <options>
+                    <value>lg-fade</value>
+                    <name xml:lang="ko">lg-fade</name>
+                </options>
+                <options>
+                    <value>lg-zoom-in</value>
+                    <name xml:lang="ko">lg-zoom-in</name>
+                </options>
+                <options>
+                    <value>lg-zoom-in-big</value>
+                    <name xml:lang="ko">lg-zoom-in-big</name>
+                </options>
+                <options>
+                    <value>lg-zoom-out</value>
+                    <name xml:lang="ko">lg-zoom-out</name>
+                </options>
+                <options>
+                    <value>lg-zoom-out-big</value>
+                    <name xml:lang="ko">lg-zoom-out-big</name>
+                </options>
+                <options>
+                    <value>lg-zoom-out-in</value>
+                    <name xml:lang="ko">lg-zoom-out-in</name>
+                </options>
+                <options>
+                    <value>lg-zoom-in-out</value>
+                    <name xml:lang="ko">lg-zoom-in-out</name>
+                </options>
+                <options>
+                    <value>lg-soft-zoom</value>
+                    <name xml:lang="ko">lg-soft-zoom</name>
+                </options>
+                <options>
+                    <value>lg-scale-up</value>
+                    <name xml:lang="ko">lg-scale-up</name>
+                </options>
+                <options>
+                    <value>lg-slide-circular</value>
+                    <name xml:lang="ko">lg-slide-circular</name>
+                </options>
+                <options>
+                    <value>lg-slide-circular-vertical</value>
+                    <name xml:lang="ko">lg-slide-circular-vertical</name>
+                </options>
+                <options>
+                    <value>lg-slide-vertical</value>
+                    <name xml:lang="ko">lg-slide-vertical</name>
+                </options>
+                <options>
+                    <value>lg-slide-vertical-growth</value>
+                    <name xml:lang="ko">lg-slide-vertical-growth</name>
+                </options>
+                <options>
+                    <value>lg-slide-skew-only</value>
+                    <name xml:lang="ko">lg-slide-skew-only</name>
+                </options>
+                <options>
+                    <value>lg-slide-skew-only-rev</value>
+                    <name xml:lang="ko">lg-slide-skew-only-rev</name>
+                </options>
+                <options>
+                    <value>lg-slide-skew-only-y</value>
+                    <name xml:lang="ko">lg-slide-skew-only-y</name>
+                </options>
+                <options>
+                    <value>lg-slide-skew-only-y-rev</value>
+                    <name xml:lang="ko">lg-slide-skew-only-y-rev</name>
+                </options>
+                <options>
+                    <value>lg-slide-skew</value>
+                    <name xml:lang="ko">lg-slide-skew</name>
+                </options>
+                <options>
+                    <value>lg-slide-skew-rev</value>
+                    <name xml:lang="ko">lg-slide-skew-rev</name>
+                </options>
+                <options>
+                    <value>lg-slide-skew-cross</value>
+                    <name xml:lang="ko">lg-slide-skew-cross</name>
+                </options>
+                <options>
+                    <value>lg-slide-skew-cross-rev</value>
+                    <name xml:lang="ko">lg-slide-skew-cross-rev</name>
+                </options>
+                <options>
+                    <value>lg-slide-skew-ver</value>
+                    <name xml:lang="ko">lg-slide-skew-ver</name>
+                </options>
+                <options>
+                    <value>lg-slide-skew-ver-rev</value>
+                    <name xml:lang="ko">lg-slide-skew-ver-rev</name>
+                </options>
+                <options>
+                    <value>lg-slide-skew-ver-cross</value>
+                    <name xml:lang="ko">lg-slide-skew-ver-cross</name>
+                </options>
+                <options>
+                    <value>lg-slide-skew-ver-cross-rev</value>
+                    <name xml:lang="ko">lg-slide-skew-ver-cross-rev</name>
+                </options>
+                <options>
+                    <value>lg-lollipop</value>
+                    <name xml:lang="ko">lg-lollipop</name>
+                </options>
+                <options>
+                    <value>lg-lollipop-rev</value>
+                    <name xml:lang="ko">lg-lollipop-rev</name>
+                </options>
+                <options>
+                    <value>lg-rotate</value>
+                    <name xml:lang="ko">lg-rotate</name>
+                </options>
+                <options>
+                    <value>lg-rotate-rev</value>
+                    <name xml:lang="ko">lg-rotate-rev</name>
+                </options>
+                <options>
+                    <value>lg-tube</value>
+                    <name xml:lang="ko">lg-tube</name>
+                </options>
+            </var>
+            <var id="csseasing" type="select">
+                <name xml:lang="ko">cssEasing</name>
+                <description xml:lang="ko">'cssEasing' 설정값을 선택하세요.</description>
+                <options>
+                    <value>cubic-bezier(0.250, 0.100, 0.250, 1.000)</value>
+                    <name xml:lang="ko">ease (default)</name>
+                </options>
+                <options>
+                    <value>cubic-bezier(0.250, 0.250, 0.750, 0.750)</value>
+                    <name xml:lang="ko">linear</name>
+                </options>
+                <options>
+                    <value>cubic-bezier(0.420, 0.000, 1.000, 1.000)</value>
+                    <name xml:lang="ko">ease-in</name>
+                </options>
+                <options>
+                    <value>cubic-bezier(0.000, 0.000, 0.580, 1.000)</value>
+                    <name xml:lang="ko">ease-out</name>
+                </options>
+                <options>
+                    <value>cubic-bezier(0.420, 0.000, 0.580, 1.000)</value>
+                    <name xml:lang="ko">ease-in-out</name>
+                </options>
+                <options>
+                    <value>cubic-bezier(0.550, 0.085, 0.680, 0.530)</value>
+                    <name xml:lang="ko">easeInQuad</name>
+                </options>
+                <options>
+                    <value>cubic-bezier(0.550, 0.055, 0.675, 0.190)</value>
+                    <name xml:lang="ko">easeInCubic</name>
+                </options>
+                <options>
+                    <value>cubic-bezier(0.895, 0.030, 0.685, 0.220)</value>
+                    <name xml:lang="ko">easeInQuart</name>
+                </options>
+                <options>
+                    <value>cubic-bezier(0.755, 0.050, 0.855, 0.060)</value>
+                    <name xml:lang="ko">easeInQuint</name>
+                </options>
+                <options>
+                    <value>cubic-bezier(0.470, 0.000, 0.745, 0.715)</value>
+                    <name xml:lang="ko">easeInSine</name>
+                </options>
+                <options>
+                    <value>cubic-bezier(0.950, 0.050, 0.795, 0.035)</value>
+                    <name xml:lang="ko">easeInExpo</name>
+                </options>
+                <options>
+                    <value>cubic-bezier(0.600, 0.040, 0.980, 0.335)</value>
+                    <name xml:lang="ko">easeInCirc</name>
+                </options>
+                <options>
+                    <value>cubic-bezier(0.600, -0.280, 0.735, 0.045)</value>
+                    <name xml:lang="ko">easeInBack</name>
+                </options>
+                <options>
+                    <value>cubic-bezier(0.250, 0.460, 0.450, 0.940)</value>
+                    <name xml:lang="ko">easeOutQuad</name>
+                </options>
+                <options>
+                    <value>cubic-bezier(0.215, 0.610, 0.355, 1.000)</value>
+                    <name xml:lang="ko">easeOutCubic</name>
+                </options>
+                <options>
+                    <value>cubic-bezier(0.165, 0.840, 0.440, 1.000)</value>
+                    <name xml:lang="ko">easeOutQuart</name>
+                </options>
+                <options>
+                    <value>cubic-bezier(0.230, 1.000, 0.320, 1.000)</value>
+                    <name xml:lang="ko">easeOutQuint</name>
+                </options>
+                <options>
+                    <value>cubic-bezier(0.390, 0.575, 0.565, 1.000)</value>
+                    <name xml:lang="ko">easeOutSine</name>
+                </options>
+                <options>
+                    <value>cubic-bezier(0.190, 1.000, 0.220, 1.000)</value>
+                    <name xml:lang="ko">easeOutExpo</name>
+                </options>
+                <options>
+                    <value>cubic-bezier(0.075, 0.820, 0.165, 1.000)</value>
+                    <name xml:lang="ko">easeOutCirc</name>
+                </options>
+                <options>
+                    <value>cubic-bezier(0.175, 0.885, 0.320, 1.275)</value>
+                    <name xml:lang="ko">easeOutBack</name>
+                </options>
+                <options>
+                    <value>cubic-bezier(0.455, 0.030, 0.515, 0.955)</value>
+                    <name xml:lang="ko">easeInOutQuad</name>
+                </options>
+                <options>
+                    <value>cubic-bezier(0.645, 0.045, 0.355, 1.000)</value>
+                    <name xml:lang="ko">easeInOutCubic</name>
+                </options>
+                <options>
+                    <value>cubic-bezier(0.770, 0.000, 0.175, 1.000)</value>
+                    <name xml:lang="ko">easeInOutQuart</name>
+                </options>
+                <options>
+                    <value>cubic-bezier(0.860, 0.000, 0.070, 1.000)</value>
+                    <name xml:lang="ko">easeInOutQuint</name>
+                </options>
+                <options>
+                    <value>cubic-bezier(0.445, 0.050, 0.550, 0.950)</value>
+                    <name xml:lang="ko">easeInOutSine</name>
+                </options>
+                <options>
+                    <value>cubic-bezier(1.000, 0.000, 0.000, 1.000)</value>
+                    <name xml:lang="ko">easeInOutExpo</name>
+                </options>
+                <options>
+                    <value>cubic-bezier(0.785, 0.135, 0.150, 0.860)</value>
+                    <name xml:lang="ko">easeInOutCirc</name>
+                </options>
+                <options>
+                    <value>cubic-bezier(0.680, -0.550, 0.265, 1.550)</value>
+                    <name xml:lang="ko">easeInOutBack</name>
+                </options>
+            </var>
+
+
+            <var id="speed" type="text">
+                <name xml:lang="ko">speed</name>
+                <description xml:lang="ko">'speed' 설정값을 입력하세요. 숫자만 입력하세요. (기본: 600)</description>
+            </var>
+            <var id="backdropduration" type="text">
+                <name xml:lang="ko">backdropDuration</name>
+                <description xml:lang="ko">'backdropDuration' 설정값을 입력하세요. 숫자만 입력하세요. (기본: 150)</description>
+            </var>
+            <var id="hidebarsdelay" type="text">
+                <name xml:lang="ko">hideBarsDelay</name>
+                <description xml:lang="ko">'hideBarsDelay' 설정값을 입력하세요. 숫자만 입력하세요. (기본: 6000)</description>
+            </var>
+            <var id="useleft" type="select">
+                <name xml:lang="ko">useLeft</name>
+                <description xml:lang="ko">'useLeft' 설정값을 선택하세요.</description>
+                <options>
+                    <value>false</value>
+                    <name xml:lang="ko">false</name>
+                </options>
+                <options>
+                    <value>true</value>
+                    <name xml:lang="ko">true</name>
+                </options>
+            </var>
+            <var id="closable" type="select">
+                <name xml:lang="ko">closable</name>
+                <description xml:lang="ko">'closable' 설정값을 선택하세요.</description>
+                <options>
+                    <value>true</value>
+                    <name xml:lang="ko">true</name>
+                </options>
+                <options>
+                    <value>false</value>
+                    <name xml:lang="ko">false</name>
+                </options>
+            </var>
+            <var id="loop" type="select">
+                <name xml:lang="ko">loop</name>
+                <description xml:lang="ko">'loop' 설정값을 선택하세요.</description>
+                <options>
+                    <value>true</value>
+                    <name xml:lang="ko">true</name>
+                </options>
+                <options>
+                    <value>false</value>
+                    <name xml:lang="ko">false</name>
+                </options>
+            </var>
+            <var id="esckey" type="select">
+                <name xml:lang="ko">escKey</name>
+                <description xml:lang="ko">'escKey' 설정값을 선택하세요.</description>
+                <options>
+                    <value>true</value>
+                    <name xml:lang="ko">true</name>
+                </options>
+                <options>
+                    <value>false</value>
+                    <name xml:lang="ko">false</name>
+                </options>
+            </var>
+            <var id="keypress" type="select">
+                <name xml:lang="ko">keyPress</name>
+                <description xml:lang="ko">'keyPress' 설정값을 선택하세요.</description>
+                <options>
+                    <value>true</value>
+                    <name xml:lang="ko">true</name>
+                </options>
+                <options>
+                    <value>false</value>
+                    <name xml:lang="ko">false</name>
+                </options>
+            </var>
+            <var id="controls" type="select">
+                <name xml:lang="ko">controls</name>
+                <description xml:lang="ko">'controls' 설정값을 선택하세요.</description>
+                <options>
+                    <value>true</value>
+                    <name xml:lang="ko">true</name>
+                </options>
+                <options>
+                    <value>false</value>
+                    <name xml:lang="ko">false</name>
+                </options>
+            </var>
+            <var id="slideendanimatoin" type="select">
+                <name xml:lang="ko">slideEndAnimatoin</name>
+                <description xml:lang="ko">'slideEndAnimatoin' 설정값을 선택하세요.</description>
+                <options>
+                    <value>true</value>
+                    <name xml:lang="ko">true</name>
+                </options>
+                <options>
+                    <value>false</value>
+                    <name xml:lang="ko">false</name>
+                </options>
+            </var>
+            <var id="hidecontrolonend" type="select">
+                <name xml:lang="ko">hideControlOnEnd</name>
+                <description xml:lang="ko">'hideControlOnEnd' 설정값을 선택하세요. 'true'일 경우 'prev/next' 버튼 을 숨깁니다.</description>
+                <options>
+                    <value>false</value>
+                    <name xml:lang="ko">false</name>
+                </options>
+                <options>
+                    <value>true</value>
+                    <name xml:lang="ko">true</name>
+                </options>
+            </var>
+            <var id="mousewheel" type="select">
+                <name xml:lang="ko">mousewheel</name>
+                <description xml:lang="ko">'mousewheel' 설정값을 선택하세요.</description>
+                <options>
+                    <value>true</value>
+                    <name xml:lang="ko">true</name>
+                </options>
+                <options>
+                    <value>false</value>
+                    <name xml:lang="ko">false</name>
+                </options>
+            </var>
+            <var id="getcaptionfromtitleoralt" type="select">
+                <name xml:lang="ko">getCaptionFromTitleOrAlt</name>
+                <description xml:lang="ko">'getCaptionFromTitleOrAlt' 설정값을 선택하세요.</description>
+                <options>
+                    <value>true</value>
+                    <name xml:lang="ko">true</name>
+                </options>
+                <options>
+                    <value>false</value>
+                    <name xml:lang="ko">false</name>
+                </options>
+            </var>
+            <var id="showafterload" type="select">
+                <name xml:lang="ko">showAfterLoad</name>
+                <description xml:lang="ko">'showAfterLoad' 설정값을 선택하세요.</description>
+                <options>
+                    <value>true</value>
+                    <name xml:lang="ko">true</name>
+                </options>
+                <options>
+                    <value>false</value>
+                    <name xml:lang="ko">false</name>
+                </options>
+            </var>
+            <var id="download" type="select">
+                <name xml:lang="ko">download</name>
+                <description xml:lang="ko">'download' 설정값을 선택하세요.</description>
+                <options>
+                    <value>true</value>
+                    <name xml:lang="ko">true</name>
+                </options>
+                <options>
+                    <value>false</value>
+                    <name xml:lang="ko">false</name>
+                </options>
+            </var>
+            <var id="counter" type="select">
+                <name xml:lang="ko">counter</name>
+                <description xml:lang="ko">'counter' 설정값을 선택하세요.</description>
+                <options>
+                    <value>true</value>
+                    <name xml:lang="ko">true</name>
+                </options>
+                <options>
+                    <value>false</value>
+                    <name xml:lang="ko">false</name>
+                </options>
+            </var>
+            <var id="swipethreshold" type="text">
+                <name xml:lang="ko">swipeThreshold</name>
+                <description xml:lang="ko">'swipeThreshold' 설정값을 입력하세요. 숫자만 입력하세요. (기본: 50)</description>
+            </var>
+            <var id="enabledrag" type="select">
+                <name xml:lang="ko">enableDrag</name>
+                <description xml:lang="ko">'enableDrag' 설정값을 선택하세요.</description>
+                <options>
+                    <value>true</value>
+                    <name xml:lang="ko">true</name>
+                </options>
+                <options>
+                    <value>false</value>
+                    <name xml:lang="ko">false</name>
+                </options>
+            </var>
+            <var id="enabletouch" type="select">
+                <name xml:lang="ko">enableTouch</name>
+                <description xml:lang="ko">'enableTouch' 설정값을 선택하세요.</description>
+                <options>
+                    <value>true</value>
+                    <name xml:lang="ko">true</name>
+                </options>
+                <options>
+                    <value>false</value>
+                    <name xml:lang="ko">false</name>
+                </options>
+            </var>
+        </group>
+
+
+        <group>
+            <title xml:lang="ko">Light Gallery Thumbnail 옵션 설정</title>
+            <var id="thumbnail" type="select">
+                <name xml:lang="ko">thumbnail</name>
+                <description xml:lang="ko">'thumbnail' 설정값을 선택하세요.</description>
+                <options>
+                    <value>true</value>
+                    <name xml:lang="ko">true</name>
+                </options>
+                <options>
+                    <value>false</value>
+                    <name xml:lang="ko">false</name>
+                </options>
+            </var>
+            <var id="animatethumb" type="select">
+                <name xml:lang="ko">animateThumb</name>
+                <description xml:lang="ko">'animateThumb' 설정값을 선택하세요.</description>
+                <options>
+                    <value>true</value>
+                    <name xml:lang="ko">true</name>
+                </options>
+                <options>
+                    <value>false</value>
+                    <name xml:lang="ko">false</name>
+                </options>
+            </var>
+            <var id="currentpagerposition" type="select">
+                <name xml:lang="ko">currentPagerPosition</name>
+                <description xml:lang="ko">'currentPagerPosition' 설정값을 선택하세요.</description>
+                <options>
+                    <value>middle</value>
+                    <name xml:lang="ko">middle</name>
+                </options>
+                <options>
+                    <value>left</value>
+                    <name xml:lang="ko">left</name>
+                </options>
+                <options>
+                    <value>right</value>
+                    <name xml:lang="ko">right</name>
+                </options>
+            </var>
+            <var id="thumbwidth" type="text">
+                <name xml:lang="ko">thumbWidth</name>
+                <description xml:lang="ko">'thumbWidth(썸네일 세로크기)' 설정값을 입력하세요. 숫자만 입력하세요. (기본: 100)</description>
+            </var>
+            <var id="thumbcontheight" type="text">
+                <name xml:lang="ko">thumbContHeight</name>
+                <description xml:lang="ko">'thumbContHeight(썸네일 세로크기)' 설정값을 입력하세요. 숫자만 입력하세요. (기본: 100)</description>
+            </var>
+            <var id="thumbmargin" type="text">
+                <name xml:lang="ko">thumbMargin</name>
+                <description xml:lang="ko">'thumbMargin(썸네일 마진)' 설정값을 입력하세요. 숫자만 입력하세요. (기본: 5)</description>
+            </var>
+            <var id="tooglethumb" type="select">
+                <name xml:lang="ko">toogleThumb</name>
+                <description xml:lang="ko">'toogleThumb' 설정값을 선택하세요.</description>
+                <options>
+                    <value>true</value>
+                    <name xml:lang="ko">true</name>
+                </options>
+                <options>
+                    <value>false</value>
+                    <name xml:lang="ko">false</name>
+                </options>
+            </var>
+            <var id="pullcaptionup" type="select">
+                <name xml:lang="ko">pullCaptionUp</name>
+                <description xml:lang="ko">'pullCaptionUp' 설정값을 선택하세요.</description>
+                <options>
+                    <value>true</value>
+                    <name xml:lang="ko">true</name>
+                </options>
+                <options>
+                    <value>false</value>
+                    <name xml:lang="ko">false</name>
+                </options>
+            </var>
+            <var id="enablethumbdrag" type="select">
+                <name xml:lang="ko">enableThumbDrag</name>
+                <description xml:lang="ko">'enableThumbDrag' 설정값을 선택하세요.</description>
+                <options>
+                    <value>true</value>
+                    <name xml:lang="ko">true</name>
+                </options>
+                <options>
+                    <value>false</value>
+                    <name xml:lang="ko">false</name>
+                </options>
+            </var>
+            <var id="enablethumbswipe" type="select">
+                <name xml:lang="ko">enableThumbSwipe</name>
+                <description xml:lang="ko">'enableThumbSwipe' 설정값을 선택하세요.</description>
+                <options>
+                    <value>true</value>
+                    <name xml:lang="ko">true</name>
+                </options>
+                <options>
+                    <value>false</value>
+                    <name xml:lang="ko">false</name>
+                </options>
+            </var>
+        </group>
+
+
+        <group>
+            <title xml:lang="ko">Light Gallery Autoplay 옵션 설정</title>
+            <var id="autoplay" type="select">
+                <name xml:lang="ko">autoplay</name>
+                <description xml:lang="ko">'autoplay' 설정값을 선택하세요.</description>
+                <options>
+                    <value>true</value>
+                    <name xml:lang="ko">true</name>
+                </options>
+                <options>
+                    <value>false</value>
+                    <name xml:lang="ko">false</name>
+                </options>
+            </var>
+            <var id="pause" type="text">
+                <name xml:lang="ko">pause</name>
+                <description xml:lang="ko">'pause' 설정값을 입력하세요. 숫자만 입력하세요. (기본: 5000)</description>
+            </var>
+            <var id="progressbar" type="select">
+                <name xml:lang="ko">progressBar</name>
+                <description xml:lang="ko">'progressBar' 설정값을 선택하세요.</description>
+                <options>
+                    <value>true</value>
+                    <name xml:lang="ko">true</name>
+                </options>
+                <options>
+                    <value>false</value>
+                    <name xml:lang="ko">false</name>
+                </options>
+            </var>
+            <var id="fourceautoplay" type="select">
+                <name xml:lang="ko">fourceAutoplay</name>
+                <description xml:lang="ko">'fourceAutoplay' 설정값을 선택하세요.</description>
+                <options>
+                    <value>false</value>
+                    <name xml:lang="ko">false</name>
+                </options>
+                <options>
+                    <value>true</value>
+                    <name xml:lang="ko">true</name>
+                </options>
+            </var>
+            <var id="autoplaycontrols" type="select">
+                <name xml:lang="ko">autoplayControls</name>
+                <description xml:lang="ko">'autoplayControls' 설정값을 선택하세요.</description>
+                <options>
+                    <value>true</value>
+                    <name xml:lang="ko">true</name>
+                </options>
+                <options>
+                    <value>false</value>
+                    <name xml:lang="ko">false</name>
+                </options>
+            </var>
+        </group>
+
+
+        <group>
+            <title xml:lang="ko">Light Gallery 기타 옵션 설정</title>
+            <var id="fullscreen" type="select">
+                <name xml:lang="ko">fullScreen</name>
+                <description xml:lang="ko">'fullScreen' 설정값을 선택하세요.</description>
+                <options>
+                    <value>true</value>
+                    <name xml:lang="ko">true</name>
+                </options>
+                <options>
+                    <value>false</value>
+                    <name xml:lang="ko">false</name>
+                </options>
+            </var>
+            <var id="pager" type="select">
+                <name xml:lang="ko">pager</name>
+                <description xml:lang="ko">'pager' 설정값을 선택하세요.</description>
+                <options>
+                    <value>false</value>
+                    <name xml:lang="ko">false</name>
+                </options>
+                <options>
+                    <value>true</value>
+                    <name xml:lang="ko">true</name>
+                </options>
+            </var>
+            <var id="zoom" type="select">
+                <name xml:lang="ko">zoom</name>
+                <description xml:lang="ko">'zoom' 설정값을 선택하세요.</description>
+                <options>
+                    <value>true</value>
+                    <name xml:lang="ko">true</name>
+                </options>
+                <options>
+                    <value>false</value>
+                    <name xml:lang="ko">false</name>
+                </options>
+            </var>
+            <var id="scale" type="text">
+                <name xml:lang="ko">scale</name>
+                <description xml:lang="ko">'scale' 설정값를 입력하세요. 숫자만 입력하세요. (기본: 1)</description>
+            </var>
+            <var id="enablezoomafter" type="text">
+                <name xml:lang="ko">enableZoomAfter</name>
+                <description xml:lang="ko">'enableZoomAfter' 설정값를 입력하세요. 숫자만 입력하세요. (기본: 50)</description>
+            </var>
+            <var id="actualsize" type="select">
+                <name xml:lang="ko">actualSize</name>
+                <description xml:lang="ko">'actualSize' 설정값을 선택하세요.</description>
+                <options>
+                    <value>true</value>
+                    <name xml:lang="ko">true</name>
+                </options>
+                <options>
+                    <value>false</value>
+                    <name xml:lang="ko">false</name>
+                </options>
+            </var>
+        </group>
+    </extra_vars>
+</widget>

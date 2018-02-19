@@ -1,0 +1,63 @@
+<!--@if(Mobile::isMobileCheckByAgent() || Mobile::isMobilePadCheckByAgent())-->{@ $easing = 'easeOutBack'; $speed = 600}<!--@else-->{@ $easing = 'swing'; $speed = 600}<!--@endif-->
+
+<load target="css/flexslider.css" />
+
+<!--@if(!$global['jqueryui'])-->{@ Context::loadJavascriptPlugin('ui'); $__Context->global['jqueryui'] = 1; }<!--@endif-->
+<load target="js/jquery.flexslider.js" type="body" />
+
+<!--@if(!$global['csi'])-->{@ $__Context->global['csi'] = 1}<!--@endif-->{@ $__Context->global['csi']++}
+
+<section class="slider">
+	<div id="flexslider{$global['csi']}" class="flexslider">
+		<ul class="slides" style="height:{$widget_info->thumbnail_height}px">
+			<li loop="$widget_info->content_items=>$key,$item">
+				<a href="{$item->getLink()}" target="_blank"|cond="$widget_info->hyperlink_target=='Y'"><img src="{$item->getThumbnail()}" /></a>
+			</li>
+			<block cond="!$widget_info->content_items">
+				<li><img src="img/placeholders/slider-slide-1.jpg" /></li>
+				<li><img src="img/placeholders/slider-slide-2.jpg" /></li>
+				<li><img src="img/placeholders/slider-slide-3.jpg" /></li>
+				<li><img src="img/placeholders/slider-slide-4.jpg" /></li>
+				<li><img src="img/placeholders/slider-slide-5.jpg" /></li>
+			</block>
+		</ul>
+	</div>
+</section>
+
+<!--@if($widget_info->list_count>1)-->
+	<!--@if($widget_info->direction=='true')-->
+		{@ $direction='true'}
+	<!--@else-->
+		{@ $direction='false'}
+	<!--@endif-->
+	<!--@if($widget_info->pager=='true')-->
+		{@ $pager='true'}
+	<!--@else-->
+		{@ $pager='false'}
+	<!--@endif-->
+	<!--@if($widget_info->pause)-->
+		{@ $auto='true'}
+	<!--@else-->
+		{@ $auto='false'}
+	<!--@endif-->
+<!--@else-->
+	{@ $direction='false'; $pager='false'; $auto='false'}
+<!--@endif-->
+
+<script>
+jQuery(document).ready(function($){
+	$('#flexslider{$global["csi"]}').flexslider({
+		animation: "{$widget_info->ani}",
+		easing: "{$easing}",
+		animationSpeed: {$speed},
+		slideshow: {$auto},
+<!--@if($widget_info->pause)-->
+		slideshowSpeed: {$widget_info->pause}000,
+<!--@endif-->
+		controlNav: {$pager},
+		directionNav: {$direction},
+		prevText: "",
+		nextText: ""
+	});
+});
+</script>

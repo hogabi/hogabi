@@ -1,0 +1,49 @@
+<aside id="sidebar" class="<!--@if($layout_info->side=='right')-->fright <!--@endif-->newclearfix">
+	<div class="side-widget searchbox newclearfix">
+		<form action="{getUrl()}" method="post" no-error-return-url="true" id="isSearch">
+			<input type="hidden" name="vid" value="{$vid}" />
+			<input type="hidden" name="mid" value="{$mid}" />
+			<input type="hidden" name="act" value="IS" />
+			<input type="hidden" name="where" value="{$where}" />
+			<input type="hidden" name="search_target" value="title_content" />
+			<input type="text" name="is_keyword" id="search_input" class="inputText" title="{$lang->cmd_search}" placeholder="{$lang->cmd_search}" value="{$is_keyword}" />
+			<input type="image" src="img/search.gif" alt="{$lang->cmd_search}" class="submit search_submit" />
+		</form>
+	</div>
+    
+    
+	<div class="sj-side-widget newclearfix">
+    <img class="zbxe_widget_output" widget="navigator" skin="vertNavigator" menu_srl="4724" start_depth="1" />		
+    </div>			
+					
+	<div cond="$layout_info->side_widget1" class="side-widget newclearfix">{$layout_info->side_widget1}</div>
+	
+	<div class="side-widget side-nav newclearfix">
+		<!--// 1st Start -->
+		<ul id="side_menu">
+			<li loop="$global_nav->list=>$key1,$val1" cond="$val1['selected'] && $val1['list']">
+				<h6 class="widget-title">{$val1['text']}</h6>
+				<!--// 2nd Start -->
+				<ul>
+					<li loop="$val1['list']=>$key2,$val2" class="current2"|cond="$val2['selected']">
+						<block cond="!$val2['list']">
+							<a href="{$val2['href']}" class="sm2nd" target="_blank"|cond="$val2['open_window']=='Y'">{$val2['text']}</a>
+						</block>
+						<block cond="$val2['list']">
+							<a class="sm2nd sm3rd-trigger<!--@if($val2['selected'])--> active<!--@endif-->" href="{$val2['href']}" target="_blank"|cond="$val2['open_window']=='Y'">{$val2['text']}</a>
+							<ul class="sm3rd-ul">
+								<li loop="$val2['list']=>$key3,$val3" class="current3"|cond="$val3['selected']">
+									<a href="{$val3['href']}" class="sm3rd" target="_blank"|cond="$val3['open_window']=='Y'">{$val3['text']}</a>
+								</li>
+							</ul>
+						</block>
+					</li>
+				</ul>
+				<!--// 2nd End -->
+			</li>
+		</ul>
+		<!--// 1st End -->
+	</div>
+	
+	<div cond="$layout_info->side_widget2" class="side-widget newclearfix">{$layout_info->side_widget2}</div>
+</aside>

@@ -1,0 +1,74 @@
+{@ Context::set('admin_bar', 'false'); Context::addMetaTag('X-UA-Compatible', 'IE=edge', true); Context::set('current_version', __ZBXE_VERSION__); }
+
+{@ $browser_type = getenv("HTTP_USER_AGENT")}
+<!--@if(preg_match("/MSIE 8.0/",$browser_type))-->{@ $IE='8'; $oldIE='1'}<!--@else if(preg_match("/MSIE 7.0/",$browser_type))-->{@ $IE='7'; $oldIE='1'}<!--@else if(preg_match("/MSIE 6.0/",$browser_type))-->{@ $IE='6'; $oldIE='1'}<!--@endif-->
+
+<!--@if(Mobile::isMobilePadCheckByAgent())-->
+<meta name="viewport" content="width=1024">
+<!--@else if(Mobile::isMobileCheckByAgent())-->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<!--@endif-->
+
+<load target="css/layout.css" />
+<!--<load target="css/PC.css" />-->
+
+<!--@if(!$layout_info->custom_font)-->
+<block cond="!$layout_info->font">{@ $layout_info->font = 'NanumGothic'; }</block>
+<!--@switch($layout_info->font)-->
+	<!--@case('NanumGothic')--><load target="fonts/nanumgothic.css" /><!--@break-->
+	<!--@case('NanumGothicS')--><load target="fonts/nanumgothics.css" /><!--@break-->
+	<!--@case('MalgunGothic')--><!--@break-->
+<!--@endswitch-->
+<!--@endif-->
+
+<!--@if($IE!='7')-->
+{@ Context::addHtmlHeader('<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">'); }
+<!--@else-->
+{@ Context::addHtmlHeader('<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">'); }
+{@ Context::addHtmlHeader('<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome-ie7.min.css" rel="stylesheet">'); }
+<!--@endif-->
+
+<style cond="$layout_info->custom_css || $layout_info->custom_font" type="text/css" id="settings">
+<!--@if($layout_info->custom_css)-->{$layout_info->custom_css}<!--@endif-->
+<!--@if($layout_info->custom_font)-->
+/* Layout */
+#sf-menu a,
+.page-title,
+#side_menu a.sm2nd,
+#side_menu a.sm3rd,
+#sidebar .widget-title,
+.xm h1,.xc h1,
+.xm .nav-tabs>li,.xc .nav-tabs>li,
+.xm .form-horizontal .control-label,
+/* Widgets */
+.smart_category ul li a,
+.smartGalleryWrap .galleryTitle,
+.intro_icon li,
+.intro_panel li,
+.more_plus .mpTitle h4,
+/* Addons */
+#mobile-nav a,
+#mobile-sign a{font-family:{$layout_info->custom_font},sans-serif}
+<!--@endif-->
+</style>
+
+{@ Context::loadJavascriptPlugin('ui'); }
+<load target="js/modernizr.custom.js" />
+<load target="js/PC.js" />
+<load target="js/sjnavi.js" />
+<load cond="$oldIE" target="js/respond.min.js" />
+<load target="js/superfish.js" type="body" />
+<load target="js/supersubs.js" type="body" />
+<load target="js/smart.js" type="body" />
+
+<block cond="!$layout_info->style">{@ $layout_info->style='box'}</block>
+<block cond="!$layout_info->type">{@ $layout_info->type='main'}</block>
+
+{@
+	$__Context->global['cbrowser'] = 1;
+	$__Context->global['fonta'] = 1;
+	$__Context->global['jqueryui'] = 1;
+	$__Context->global['modernizr'] = 1;
+}
+
+<!--@if(!$layout_info->logo_link)-->{@ $logo_link = getFullUrl()}<!--@else-->{@ $logo_link = $layout_info->logo_link}<!--@endif-->

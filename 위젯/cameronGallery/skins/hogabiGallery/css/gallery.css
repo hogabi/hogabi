@@ -1,0 +1,59 @@
+@charset "utf-8";
+/* Clearfix */
+.newclearfix:after{clear:both; content:' '; display:block; font-size:0; height:0; line-height:0; visibility:hidden; width:0}
+* html .newclearfix,:first-child+html .newclearfix{zoom:1}
+
+/* a */
+.smartGallery a,
+.smartGallery a > *{text-decoration:none; -webkit-transition:background-color .2s ease, border .2s ease, color .2s ease, opacity .2s ease-in-out; -moz-transition:background-color .2s ease, border .2s ease, color .2s ease, opacity .2s ease-in-out; -ms-transition:background-color .2s ease, border .2s ease, color .2s ease, opacity .2s ease-in-out; -o-transition:background-color .2s ease, border .2s ease, color .2s ease, opacity .2s ease-in-out; transition:background-color .2s ease, border .2s ease, color .2s ease, opacity .2s ease-in-out}
+.smartGallery a:hover{text-decoration:none}
+.smartGallery img,
+.smartGallery iframe{vertical-align:middle}
+
+/* Widget */
+.smartGalleryWrap{position:relative; margin:45px 0 30px 0; max-width:100%; padding:15px 0 0; border-top:1px solid #efefef}
+.smartGalleryWrap .galleryTitle{position:absolute; left:0; top:-32px; margin:0; padding:0; font-family:'Nanum Gothic','Malgun Gothic',돋움,sans-serif; font-size:14px; font-weight:700; color:#3a3a3a}
+.smartGallery{width:20000em; margin:0; padding:0; list-style:none}
+.smartGallery > li{position:relative; float:left; width:165px; margin:0 20px 0 0; padding:0 0 8px 0; overflow:hidden}
+.smartGallery li a{display:block; position:relative; padding:0 0 11px; background-color:#f8f8f8; border-top:2px solid #fff; border-bottom:5px solid #eaeaea; outline:none}
+.smartGallery li img{margin:0 auto 9px auto; background-color:#fff; filter:alpha(opacity=70); opacity:0.7}
+.smartGallery h5,
+.smartGallery p{font-family:돋움,sans-serif; font-weight:normal; margin:0 5px; text-align:center; font-size:12px; color:#2d2d2d}
+.smartGallery .title{color:#2d2d2d}
+.smartGallery .ext{margin-top:7px; font-size:11px; color:#8f8f8f}
+.smartGallery > li .categories{color:#aeaeae; display:block; font-style:italic; margin:-1px 0 20px}
+.smartGallery a:hover,
+.smartGallery a:focus{background:none; border-top-color:#fd7700; border-bottom-color:#fd7700; color:#fff}
+.smartGallery a:hover img,
+.smartGallery a:focus img{filter:alpha(opacity=100); opacity:1}
+.smartGallery a .gallery_arrow{display:block; filter:alpha(opacity=0); opacity:0; border-bottom:7px solid #fd7700; border-left:6px solid transparent; border-right:6px solid transparent; position:absolute; height:0; width:0; left:50%; margin-left:-6px; bottom:0}
+.smartGallery a:hover .gallery_arrow,
+.smartGallery a:focus .gallery_arrow{filter:alpha(opacity=100); opacity:1}
+
+.jcarousel-container{margin:0 -20px 0 0; max-width:100%}
+.jcarousel-clip{overflow:hidden; width:100%}
+.jcarousel-item{margin:0 20px 0 0; width:220px}
+.jcarousel-next, .jcarousel-prev{background:#ddd url(../img/button-arrows.png) no-repeat 0 0; cursor:pointer; height:19px; position:absolute; right:0; top:-48px; width:19px; -webkit-transition:background-color .2s ease; -moz-transition:background-color .2s ease; -ms-transition:background-color .2s ease; -o-transition:background-color .2s ease; transition:background-color .2s ease}
+.jcarousel-prev{background-position:0 -19px; right:20px}
+.jcarousel-next:hover, .jcarousel-next:focus, .jcarousel-next:active,
+.jcarousel-prev:hover, .jcarousel-prev:focus, .jcarousel-prev:active{background-color:#fd7700}
+.jcarousel-next-disabled, .jcarousel-next-disabled:hover,
+.jcarousel-next-disabled:focus, .jcarousel-next-disabled:active,
+.jcarousel-prev-disabled, .jcarousel-prev-disabled:hover,
+.jcarousel-prev-disabled:focus, .jcarousel-prev-disabled:active{background-color:#eee !important; cursor:auto !important}
+
+@media screen and (max-width:959px){
+	.smartGalleryWrap{margin-bottom:0}
+}
+@media screen and (min-width:768px) and (max-width:959px){
+	.smartGallery > li, .smartGallery > li img{width:236px}
+}
+@media screen and (min-width:480px) and (max-width:767px){
+	.smartGallery > li, .smartGallery > li img{width:200px}
+}
+@media screen and (max-width:479px){
+	.smartGallery > li, .smartGallery > li img{width:300px}
+}
+
+/* XE Fix */
+.x #zonePageContent .smartGallery{margin:0; padding:0}
